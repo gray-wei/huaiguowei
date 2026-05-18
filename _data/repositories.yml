@@ -1,0 +1,6 @@
+github_users: [] # TODO: add Guowei's GitHub username
+
+repo_description_lines_max: 2
+
+github_repos:
+  - zachzhuu/RDT-Airbot

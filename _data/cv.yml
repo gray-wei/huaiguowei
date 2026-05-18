@@ -1,0 +1,31 @@
+cv:
+  name: Guowei Huai
+  label: MPhil Student in Robotics and Autonomous Systems
+  email: ghuai073@hkust-gz.edu.cn
+  location: Guangzhou, Guangdong, China
+  image: ""
+  summary: Researcher working on dexterous manipulation, real-world robot learning, teleoperation, and multimodal robotic data collection.
+
+  social_networks:
+    - network: Email
+      username: ghuai073@hkust-gz.edu.cn
+
+  sections:
+    Education:
+      - institution: The Hong Kong University of Science and Technology (Guangzhou)
+        location: Guangzhou, China
+        area: Robotics and Autonomous Systems
+        studyType: MPhil
+        start_date: 2024-09
+        end_date: Present
+
+      - institution: Beijing Institute of Technology, Zhuhai
+        location: Zhuhai, China
+        area: Computer Science
+        studyType: B.Eng.
+        start_date: 2019-09
+        end_date: 2023-06
+
+    Research Interests:
+      - name: Robotics
+        keywords: "Dexterous manipulation, robot learning, RL/IL, teleoperation, tactile sensing"
