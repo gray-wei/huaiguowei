@@ -101,7 +101,7 @@ test("builds a reviewable static homepage preview", () => {
     /<a href="https:\/\/hly-123\.github\.io\/">Linyi HUANG<\/a>, Guowei HUAI, Weibin LIU, Shulong JIANG, Ping TAN, <a href="https:\/\/zdchan\.github\.io\/">Hui ZHANG<\/a>, <a href="https:\/\/scholar\.google\.com\/citations\?hl=en&user=kBN1B6YAAAAJ&view_op=list_works&sortby=pubdate">Jie SONG<\/a>/,
   );
   assert.match(html, /Guowei HUAI, <a href="https:\/\/hly-123\.github\.io\/">Linyi HUANG<\/a>/);
-  assert.match(html, /MPhil Full Scholarship, RBM Program, HKUST\(GZ\), 240,000 RMB over 2 years/);
+  assert.doesNotMatch(html, /MPhil Full Scholarship, RBM Program, HKUST\(GZ\), 240,000 RMB over 2 years/);
   assert.match(html, /First Prize, HKUST\(GZ\) Bionic Robot Innovation Competition, MoSense Team, 50,000 RMB/);
   assert.match(html, /Quarterfinalist, 1st WBCD Competition @ ICRA 2025, Top 8/);
   assert.match(html, /Principal's First-Class Scholarship, BITZH, 30,000 RMB, 1\/2000/);

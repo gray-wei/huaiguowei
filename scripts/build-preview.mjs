@@ -105,7 +105,6 @@ const publicationItems = [
 ];
 
 const honors = [
-  "MPhil Full Scholarship, RBM Program, HKUST(GZ), 240,000 RMB over 2 years.",
   "First Prize, HKUST(GZ) Bionic Robot Innovation Competition, MoSense Team, 50,000 RMB.",
   "Quarterfinalist, 1st WBCD Competition @ ICRA 2025, Top 8.",
   "Principal's First-Class Scholarship, BITZH, 30,000 RMB, 1/2000.",
