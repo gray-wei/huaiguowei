@@ -10,66 +10,106 @@ const person = {
   cnName: "怀国威",
   subtitle: "MPhil student in Robotics and Autonomous Systems at HKUST(GZ)",
   location: "Guangzhou, Guangdong, China",
-  email: "ghuai073@hkust-gz.edu.cn",
+  email: "ghuai073@connect.hkust-gz.edu.cn",
+  image: "assets/img/profile/gray_pic.jpg",
+  supervisor: {
+    name: "Jie SONG",
+    url: "https://scholar.google.com/citations?hl=en&user=kBN1B6YAAAAJ&view_op=list_works&sortby=pubdate",
+  },
+  education: "I received my B.Eng. in Computer Science from Beijing Institute of Technology, Zhuhai.",
   research:
-    "I work on dexterous manipulation, real-world robot learning, and teleoperation. My current focus is building robot systems that connect human demonstrations, tactile and visual sensing, and reinforcement/imitation learning for contact-rich manipulation.",
-  focus: ["dexterous hands", "contact-rich RL", "teleoperation", "tactile sensing"],
+    "My research focuses on dexterous manipulation, with a particular emphasis on in-hand manipulation, real-world robot learning, teleoperation, and tactile sensing for contact-rich robotic tasks.",
+  focus: ["Dexterous Hands", "Contact-rich RL", "Teleoperation", "Tactile Sensing"],
 };
+
+const jieSongUrl = person.supervisor.url;
 
 const links = [
   ["Email", `mailto:${person.email}`],
   ["CV", "assets/pdf/cv/Guowei_Huai_CV.pdf"],
-  ["中文简历", "assets/pdf/cv/Guowei_Huai_CV_ZH.pdf"],
   ["Google Scholar", "#"],
-  ["Github", "#"],
+  ["GitHub", "https://github.com/gray-wei"],
 ];
 
-const researchItems = [
+const projectItems = [
   {
-    title: "HiFun: Hierarchical Real-World RL for Functional Dexterous Manipulation",
-    authors: "Guowei Huai and collaborators",
-    venue: "CoRL 2026 under review",
-    role: "Core contributor",
+    title: "Goal-Conditioned In-Hand Teleoperation",
+    authorsHtml: `Guowei HUAI, <a href="https://zdchan.github.io/">Hui ZHANG</a>, <a href="${jieSongUrl}">Jie SONG</a>`,
+    status: "Ongoing",
     description:
-      "A hierarchical real-world reinforcement learning pipeline for contact-rich functional dexterous manipulation, targeting tool-use tasks with high-DoF arm-hand systems.",
-    links: ["Project Page", "PDF", "Video"],
-    media: "HiFun",
-    video: "assets/video/research/hifun-preview.mp4",
-  },
-  {
-    title: "Goal-Conditioned In-Hand Rotation Teleoperation Framework",
-    authors: "Guowei Huai",
-    venue: "Active research project",
-    role: "Project leader",
-    description:
-      "A goal-conditioned teleoperation and RL framework for multi-axis in-hand object rotation, using force-closure grasp initialization and tactile-aware control.",
-    links: ["Project Page", "Demo"],
+      "A goal-conditioned in-hand teleoperation framework for multi-axis object rotation, using force-closure grasp initialization and tactile-aware control.",
     media: "In-Hand Rotation",
-    video: "assets/video/research/inhand-preview.mp4",
+    video: "assets/video/research/goal-conditioned-preview.mp4",
+    links: [
+      ["Project Page", "#"],
+      ["arXiv", "#"],
+      ["Code", "#"],
+    ],
   },
   {
-    title: "Dexterous Teleoperation and Multimodal Data Platform",
-    authors: "Guowei Huai",
-    venue: "Research platform",
-    role: "Project leader",
+    title: "Dexterous Arm-Hand Teleoperation System",
+    authorsHtml: 'Guowei HUAI, <a href="https://hly-123.github.io/">Linyi HUANG</a>',
+    status: "Teleoperation System",
     description:
-      "A cross-embodiment teleoperation and data collection platform connecting Vision Pro, Manus glove, GELLO, tactile sensing, and several dexterous hands.",
-    links: ["Project Page", "Demo"],
+      "A coordinated teleoperation system for robot arms and dexterous hands, integrating Vision Pro, Manus glove, GELLO, tactile sensing, and demonstration collection.",
     media: "Teleoperation",
     video: "assets/video/research/teleop-preview.mp4",
+    links: [
+      ["Project Page", "#"],
+      ["arXiv", "#"],
+      ["Code", "#"],
+    ],
+  },
+  {
+    title: "Multifunctional Mobile Robotic Platform",
+    authorsHtml: "Guowei HUAI, Jiahong CHEN, Qingyun WANG, Pengfei MAI",
+    advisorsHtml: "Arthur Kar Leung LIN, Jun MA, Jie SONG",
+    status: "RBM Team Project",
+    description:
+      "A mobile manipulation platform integrating legged locomotion, robot-arm coordination, target tracking and picking, dexterous teleoperation, tactile sensing, and multimodal data collection.",
+    media: "Mobile Robot",
+    video: "assets/video/research/rbm-final-project.mp4",
+    linksEnabled: false,
+  },
+  {
+    title: "Validating Diffusion-Based Visual Imitation Learning for Robotic Manipulation",
+    authorsHtml: "Yiming ZHU, Jiahong CHEN, Guowei HUAI",
+    status: "Course project",
+    description:
+      "Fine-tuning Robotics Diffusion Transformer on self-collected AIRBOT Play demonstrations for generalization, long-horizon pick-and-place, and state-aware recovery.",
+    media: "RDT",
+    image: "assets/img/projects/rdt-airbot-state-test.gif",
+    links: [
+      ["Report", "https://github.com/zachzhuu/RDT-Airbot/blob/main/assets/report.pdf"],
+      ["Code", "https://github.com/zachzhuu/RDT-Airbot"],
+    ],
   },
 ];
 
-const publications = [
-  "HiFun: Hierarchical Real-World RL for Functional Dexterous Manipulation, CoRL 2026 under review, second author.",
-  "Reviewer, ICRA 2026 Workshop on Manipulation Robustness.",
-  "Method for Obtaining Edge Contours for Robot Navigation, invention patent.",
+const publicationItems = [
+  {
+    title: "HiFun: Hierarchical Real-World RL for Functional Dexterous Manipulation",
+    authorsHtml:
+      `<a href="https://hly-123.github.io/">Linyi HUANG</a>, Guowei HUAI, Weibin LIU, Shulong JIANG, Ping TAN, <a href="https://zdchan.github.io/">Hui ZHANG</a>, <a href="${jieSongUrl}">Jie SONG</a>`,
+    status: "CoRL 2026 under review",
+    description:
+      "A hierarchical real-world reinforcement learning pipeline for contact-rich functional dexterous manipulation, targeting tool-use tasks with high-DoF arm-hand systems.",
+    media: "HiFun",
+    video: "assets/video/research/hifun-preview.mp4",
+    links: [
+      ["Project Page", "#"],
+      ["arXiv", "#"],
+      ["Code", "#"],
+    ],
+  },
 ];
 
 const honors = [
-  "First Prize, HKUST(GZ) Bionic Robot Innovation Competition, MoSense Team.",
-  "Quarterfinalist (Top 8), 1st WBCD Competition at ICRA 2025.",
-  "MPhil Full Scholarship, RBM Program, HKUST(GZ).",
+  "MPhil Full Scholarship, RBM Program, HKUST(GZ), 240,000 RMB over 2 years.",
+  "First Prize, HKUST(GZ) Bionic Robot Innovation Competition, MoSense Team, 50,000 RMB.",
+  "Quarterfinalist, 1st WBCD Competition @ ICRA 2025, Top 8.",
+  "Principal's First-Class Scholarship, BITZH, 30,000 RMB, 1/2000.",
+  "Climbing Plan Science and Technology Innovation Project Award, 30,000 RMB.",
 ];
 
 function escapeHtml(value) {
@@ -83,31 +123,41 @@ function escapeHtml(value) {
 function renderLinks(items) {
   return items
     .map(([label, href]) => `<a href="${escapeHtml(href)}">${escapeHtml(label)}</a>`)
-    .join(" <span>/</span> ");
-}
-
-function renderInlineLinks(items) {
-  return items.map((label) => `<a href="#">${escapeHtml(label)}</a>`).join(" / ");
+    .join("<span>/</span>");
 }
 
 function renderFocus(items) {
   return items.map((item) => `<span>${escapeHtml(item)}</span>`).join("");
 }
 
-function renderResearchItem(item) {
+function renderFeatureLinks(items) {
+  return items.map(([label, href]) => `<a href="${escapeHtml(href)}">${escapeHtml(label)}</a>`).join(" / ");
+}
+
+function renderBio() {
+  return `I am a second-year MPhil student in Robotics and Autonomous Systems at the Hong Kong University of Science and Technology (Guangzhou), supervised by <a href="${escapeHtml(person.supervisor.url)}">${escapeHtml(person.supervisor.name)}</a>. ${escapeHtml(person.education)} ${escapeHtml(person.research)}`;
+}
+
+function renderFeatureItem(item, itemClass = "project-item", copyClass = "project-copy") {
   return `
-    <article class="paper-item">
-      <div class="media-box" aria-hidden="true">
-        <video class="research-video" src="${escapeHtml(item.video)}" autoplay muted loop playsinline preload="metadata"></video>
-        <span class="media-pattern"></span>
-        <span class="motion-rail"></span>
-        <strong>${escapeHtml(item.media)}</strong>
+    <article class="${itemClass}">
+      <div class="media-column">
+        <div class="media-box" aria-hidden="true">
+          ${
+            item.image
+              ? `<img class="research-image" src="${escapeHtml(item.image)}" alt="" />`
+              : `<video class="research-video" src="${escapeHtml(item.video)}" autoplay muted loop playsinline preload="metadata"></video>`
+          }
+          <span class="media-pattern"></span>
+          <span class="motion-rail"></span>
+        </div>
       </div>
-      <div class="paper-copy">
+      <div class="${copyClass}">
         <h3><a href="#">${escapeHtml(item.title)}</a></h3>
-        <p class="authors">${escapeHtml(item.authors)}</p>
-        <p class="venue">${escapeHtml(item.venue)} · ${escapeHtml(item.role)}</p>
-        <p class="paper-links">${renderInlineLinks(item.links)}</p>
+        <p class="authors">${item.authorsHtml}</p>
+        ${item.advisorsHtml ? `<p class="advisors">Advisors: ${item.advisorsHtml}</p>` : ""}
+        <p class="project-status">${escapeHtml(item.status)}</p>
+        ${item.linksEnabled === false ? "" : `<p class="paper-links">${renderFeatureLinks(item.links)}</p>`}
         <p>${escapeHtml(item.description)}</p>
       </div>
     </article>
@@ -137,25 +187,24 @@ function renderHtml() {
           <span class="name-mark">${escapeHtml(person.cnName)}</span>
         </div>
         <p>${escapeHtml(person.subtitle)}.</p>
-        <p>${escapeHtml(person.research)}</p>
+        <p>${renderBio()}</p>
         <div class="focus-strip">${renderFocus(person.focus)}</div>
         <p class="links">${renderLinks(links)}</p>
       </div>
       <aside class="profile">
-        <div class="portrait">GH</div>
-        <p>${escapeHtml(person.location)}</p>
+        <img class="portrait" src="${escapeHtml(person.image)}" alt="${escapeHtml(person.name)}" />
       </aside>
     </section>
 
-    <section id="research">
-      <h2>Research</h2>
-      <p class="section-note">I am interested in dexterous manipulation and robot learning for real-world contact-rich tasks. Representative projects are listed below.</p>
-      <div class="paper-list">${researchItems.map(renderResearchItem).join("")}</div>
+    <section id="publications">
+      <h2>Publications</h2>
+      <div class="publication-list">${publicationItems.map((item) => renderFeatureItem(item, "publication-item", "publication-copy")).join("")}</div>
     </section>
 
-    <section id="publications">
-      <h2>Publications & Service</h2>
-      <ul class="text-list">${renderList(publications)}</ul>
+    <section id="projects">
+      <h2>Projects</h2>
+      <p class="section-note">Selected projects in dexterous manipulation, in-hand manipulation, teleoperation, and robot learning for real-world contact-rich tasks.</p>
+      <div class="project-list">${projectItems.map((item) => renderFeatureItem(item)).join("")}</div>
     </section>
 
     <section id="honors">
@@ -163,9 +212,6 @@ function renderHtml() {
       <ul class="text-list">${renderList(honors)}</ul>
     </section>
 
-    <footer>
-      Page structure inspired by compact academic homepages. Media, final links, and project pages will be added after review.
-    </footer>
   </main>
 </body>
 </html>`;
@@ -213,7 +259,7 @@ a:hover {
 
 .intro {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 190px;
+  grid-template-columns: minmax(0, 1fr) 220px;
   gap: 34px;
   align-items: start;
 }
@@ -264,6 +310,10 @@ p {
 }
 
 .links {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0 14px;
+  align-items: center;
   margin-top: 16px;
 }
 
@@ -282,9 +332,13 @@ p {
   font-size: 13px;
 }
 
-.links span,
+.links span {
+  color: var(--soft);
+}
+
 .paper-links {
   color: var(--soft);
+  margin-bottom: 8px;
 }
 
 .profile {
@@ -294,33 +348,36 @@ p {
 }
 
 .portrait {
-  display: grid;
-  width: 178px;
-  height: 178px;
-  margin: 0 auto 10px;
-  place-items: center;
+  width: 220px;
+  height: 300px;
+  margin: 0 auto;
   border: 1px solid var(--line);
   background: var(--media);
-  color: #34535d;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 42px;
+  object-fit: cover;
+  object-position: center 30%;
 }
 
 .section-note {
   max-width: 760px;
 }
 
-.paper-list {
+.project-list,
+.publication-list {
   display: grid;
   gap: 22px;
   margin-top: 18px;
 }
 
-.paper-item {
+.project-item,
+.publication-item {
   display: grid;
   grid-template-columns: 230px minmax(0, 1fr);
   gap: 18px;
   align-items: start;
+}
+
+.media-column {
+  min-width: 0;
 }
 
 .media-box {
@@ -347,17 +404,28 @@ p {
   transition: opacity 180ms ease, filter 180ms ease, transform 420ms ease;
 }
 
-.paper-item:hover .research-video {
+.research-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-item:hover .research-video,
+.publication-item:hover .research-video {
   opacity: 0.9;
   filter: saturate(1) contrast(1);
   transform: scale(1.025);
 }
 
-.paper-item {
+.project-item,
+.publication-item {
   position: relative;
 }
 
-.paper-item::before {
+.project-item::before,
+.publication-item::before {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -366,14 +434,6 @@ p {
   background: linear-gradient(var(--accent), rgba(183, 76, 56, 0));
   content: "";
   opacity: 0.45;
-}
-
-.media-box strong {
-  position: relative;
-  z-index: 1;
-  max-width: 84%;
-  padding: 3px 7px;
-  background: rgba(255, 255, 255, 0.78);
 }
 
 .media-pattern {
@@ -430,11 +490,12 @@ p {
 }
 
 .authors,
-.venue {
+.advisors,
+.project-status {
   color: var(--muted);
 }
 
-.paper-links {
+.project-status {
   margin-bottom: 8px;
 }
 
@@ -457,7 +518,8 @@ footer {
 
 @media (max-width: 720px) {
   .intro,
-  .paper-item {
+  .project-item,
+  .publication-item {
     display: block;
   }
 
@@ -467,8 +529,8 @@ footer {
   }
 
   .portrait {
-    width: 150px;
-    height: 150px;
+    width: 165px;
+    height: 225px;
     margin-left: 0;
   }
 
@@ -490,13 +552,18 @@ footer {
 
 rmSync(outDir, { force: true, recursive: true });
 mkdirSync(join(outDir, "assets", "pdf", "cv"), { recursive: true });
+mkdirSync(join(outDir, "assets", "img", "profile"), { recursive: true });
+mkdirSync(join(outDir, "assets", "img", "projects"), { recursive: true });
 mkdirSync(join(outDir, "assets", "video", "research"), { recursive: true });
 writeFileSync(join(outDir, "index.html"), renderHtml());
 writeFileSync(join(outDir, "assets", "preview.css"), css.trimStart());
+cpSync(join(root, "assets", "img", "profile", "gray_pic.jpg"), join(outDir, "assets", "img", "profile", "gray_pic.jpg"));
+cpSync(join(root, "assets", "img", "projects", "rdt-airbot-state-test.gif"), join(outDir, "assets", "img", "projects", "rdt-airbot-state-test.gif"));
 cpSync(join(root, "assets", "pdf", "cv", "Guowei_Huai_CV.pdf"), join(outDir, "assets", "pdf", "cv", "Guowei_Huai_CV.pdf"));
 cpSync(join(root, "assets", "pdf", "cv", "Guowei_Huai_CV_ZH.pdf"), join(outDir, "assets", "pdf", "cv", "Guowei_Huai_CV_ZH.pdf"));
 cpSync(join(root, "assets", "video", "research", "hifun-preview.mp4"), join(outDir, "assets", "video", "research", "hifun-preview.mp4"));
-cpSync(join(root, "assets", "video", "research", "inhand-preview.mp4"), join(outDir, "assets", "video", "research", "inhand-preview.mp4"));
+cpSync(join(root, "assets", "video", "research", "goal-conditioned-preview.mp4"), join(outDir, "assets", "video", "research", "goal-conditioned-preview.mp4"));
 cpSync(join(root, "assets", "video", "research", "teleop-preview.mp4"), join(outDir, "assets", "video", "research", "teleop-preview.mp4"));
+cpSync(join(root, "assets", "video", "research", "rbm-final-project.mp4"), join(outDir, "assets", "video", "research", "rbm-final-project.mp4"));
 
 console.log(`Preview built at ${join(outDir, "index.html")}`);

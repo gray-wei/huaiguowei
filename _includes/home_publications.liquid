@@ -1,0 +1,42 @@
+<div class="home-feature-list home-publications">
+  {% assign publication_items = site.projects | where: 'homepage_publication', true | sort: 'importance' %}
+  {% assign publication_limit = include.limit | default: publication_items.size %}
+  {% for publication in publication_items limit: publication_limit %}
+    <article class="home-feature-item">
+      {% if publication.video %}
+        <div class="home-feature-media" aria-hidden="true">
+          <video
+            class="home-feature-video"
+            src="{{ publication.video | relative_url }}"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          ></video>
+        </div>
+      {% endif %}
+      <div class="home-feature-copy">
+        <h3>
+          <a href="{{ publication.url | relative_url }}">{{ publication.title }}</a>
+        </h3>
+        {% if publication.authors_html %}
+          <p class="home-feature-meta">{{ publication.authors_html }}</p>
+        {% elsif publication.authors %}
+          <p class="home-feature-meta">{{ publication.authors }}</p>
+        {% endif %}
+        {% if publication.status %}
+          <p class="home-feature-status">{{ publication.status }}</p>
+        {% endif %}
+        <p class="home-feature-links">
+          <a href="{{ publication.url | relative_url }}">Project Page</a>
+          /
+          <a href="{{ publication.arxiv | default: '#' }}">arXiv</a>
+          /
+          <a href="{{ publication.code | default: '#' }}">Code</a>
+        </p>
+        <p>{{ publication.description }}</p>
+      </div>
+    </article>
+  {% endfor %}
+</div>

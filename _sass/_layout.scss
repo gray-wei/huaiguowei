@@ -37,6 +37,9 @@ body.sticky-bottom-footer {
 .profile {
   img {
     width: 100%;
+    aspect-ratio: 11 / 15;
+    object-fit: cover;
+    object-position: center 30%;
   }
 }
 

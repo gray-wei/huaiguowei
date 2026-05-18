@@ -1,14 +1,14 @@
 cv:
   name: Guowei Huai
   label: MPhil Student in Robotics and Autonomous Systems
-  email: ghuai073@hkust-gz.edu.cn
+  email: ghuai073@connect.hkust-gz.edu.cn
   location: Guangzhou, Guangdong, China
-  image: ""
-  summary: Researcher working on dexterous manipulation, real-world robot learning, teleoperation, and multimodal robotic data collection.
+  image: assets/img/profile/gray_pic.jpg
+  summary: Researcher working on dexterous manipulation, especially in-hand manipulation, real-world robot learning, teleoperation, and tactile sensing for contact-rich robotic tasks.
 
   social_networks:
     - network: Email
-      username: ghuai073@hkust-gz.edu.cn
+      username: ghuai073@connect.hkust-gz.edu.cn
 
   sections:
     Education:

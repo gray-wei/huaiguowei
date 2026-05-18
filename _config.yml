@@ -9,12 +9,12 @@ last_name: Huai
 contact_note: >
   For research discussions and collaboration, email is the best way to reach me.
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Guowei Huai is an MPhil student in Robotics and Autonomous Systems at HKUST(GZ), working on dexterous manipulation,
-  real-world robot learning, teleoperation, and multimodal robotic data collection.
+  Guowei Huai is a second-year MPhil student in Robotics and Autonomous Systems at HKUST(GZ), working on dexterous manipulation,
+  in-hand manipulation, real-world robot learning, teleoperation, and tactile sensing for contact-rich robotic tasks.
 footer_text: >
   Built with <a href="https://github.com/alshedivat/al-folio">al-folio</a>.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-keywords: robotics, dexterous manipulation, robot learning, reinforcement learning, teleoperation, multimodal data
+keywords: robotics, dexterous manipulation, in-hand manipulation, robot learning, reinforcement learning, teleoperation, tactile sensing
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: 🦾 # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
