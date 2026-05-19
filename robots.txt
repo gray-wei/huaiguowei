@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://gray-wei.github.io/huaiguowei/sitemap.xml
