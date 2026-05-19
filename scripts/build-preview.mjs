@@ -89,8 +89,7 @@ const projectItems = [
 const publicationItems = [
   {
     title: "HiFun: Hierarchical Real-World RL for Functional Dexterous Manipulation",
-    authorsHtml:
-      `<a href="https://hly-123.github.io/">Linyi HUANG</a>, Guowei HUAI, Weibin LIU, Shulong JIANG, Ping TAN, <a href="https://zdchan.github.io/">Hui ZHANG</a>, <a href="${jieSongUrl}">Jie SONG</a>`,
+    authorsHtml: `<a href="https://hly-123.github.io/">Linyi HUANG</a>, Guowei HUAI, Weibin LIU, Shulong JIANG, Ping TAN, <a href="https://zdchan.github.io/">Hui ZHANG</a>, <a href="${jieSongUrl}">Jie SONG</a>`,
     status: "CoRL 2026 under review",
     description:
       "A hierarchical real-world reinforcement learning pipeline for contact-rich functional dexterous manipulation, targeting tool-use tasks with high-DoF arm-hand systems.",
@@ -112,17 +111,11 @@ const honors = [
 ];
 
 function escapeHtml(value) {
-  return value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
+  return value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 }
 
 function renderLinks(items) {
-  return items
-    .map(([label, href]) => `<a href="${escapeHtml(href)}">${escapeHtml(label)}</a>`)
-    .join("<span>/</span>");
+  return items.map(([label, href]) => `<a href="${escapeHtml(href)}">${escapeHtml(label)}</a>`).join("<span>/</span>");
 }
 
 function renderFocus(items) {
@@ -561,7 +554,10 @@ cpSync(join(root, "assets", "img", "projects", "rdt-airbot-state-test.gif"), joi
 cpSync(join(root, "assets", "pdf", "cv", "Guowei_Huai_CV.pdf"), join(outDir, "assets", "pdf", "cv", "Guowei_Huai_CV.pdf"));
 cpSync(join(root, "assets", "pdf", "cv", "Guowei_Huai_CV_ZH.pdf"), join(outDir, "assets", "pdf", "cv", "Guowei_Huai_CV_ZH.pdf"));
 cpSync(join(root, "assets", "video", "research", "hifun-preview.mp4"), join(outDir, "assets", "video", "research", "hifun-preview.mp4"));
-cpSync(join(root, "assets", "video", "research", "goal-conditioned-preview.mp4"), join(outDir, "assets", "video", "research", "goal-conditioned-preview.mp4"));
+cpSync(
+  join(root, "assets", "video", "research", "goal-conditioned-preview.mp4"),
+  join(outDir, "assets", "video", "research", "goal-conditioned-preview.mp4")
+);
 cpSync(join(root, "assets", "video", "research", "teleop-preview.mp4"), join(outDir, "assets", "video", "research", "teleop-preview.mp4"));
 cpSync(join(root, "assets", "video", "research", "rbm-final-project.mp4"), join(outDir, "assets", "video", "research", "rbm-final-project.mp4"));
 

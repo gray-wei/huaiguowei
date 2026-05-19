@@ -21,11 +21,11 @@ test("builds a reviewable static homepage preview", () => {
   const projectsHtml = html.slice(html.indexOf('<section id="projects"'));
   const mobileProjectHtml = projectsHtml.slice(
     projectsHtml.indexOf("Multifunctional Mobile Robotic Platform"),
-    projectsHtml.indexOf("Validating Diffusion-Based Visual Imitation Learning for Robotic Manipulation"),
+    projectsHtml.indexOf("Validating Diffusion-Based Visual Imitation Learning for Robotic Manipulation")
   );
   const rdtProjectHtml = projectsHtml.slice(
     projectsHtml.indexOf("Validating Diffusion-Based Visual Imitation Learning for Robotic Manipulation"),
-    projectsHtml.indexOf('<section id="honors"'),
+    projectsHtml.indexOf('<section id="honors"')
   );
 
   assert.match(html, /Guowei HUAI/);
@@ -33,7 +33,10 @@ test("builds a reviewable static homepage preview", () => {
   assert.match(html, /https:\/\/github\.com\/gray-wei/);
   assert.doesNotMatch(html, /ghuai073@hkust-gz\.edu\.cn/);
   assert.doesNotMatch(html, /<a href="#">GitHub<\/a>/);
-  assert.match(html, /supervised by <a href="https:\/\/scholar\.google\.com\/citations\?hl=en&amp;user=kBN1B6YAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Jie SONG<\/a>/);
+  assert.match(
+    html,
+    /supervised by <a href="https:\/\/scholar\.google\.com\/citations\?hl=en&amp;user=kBN1B6YAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Jie SONG<\/a>/
+  );
   assert.match(html, /with a particular emphasis on in-hand manipulation/);
   assert.match(html, /Dexterous Manipulation/);
   assert.match(html, /<main class="page-shell"/);
@@ -42,7 +45,7 @@ test("builds a reviewable static homepage preview", () => {
   assert.match(html, /class="name-mark"/);
   assert.match(html, /<h2>Publications<\/h2>/);
   assert.match(html, /<h2>Projects<\/h2>/);
-  assert.ok(html.indexOf("<section id=\"publications\"") < html.indexOf("<section id=\"projects\""));
+  assert.ok(html.indexOf('<section id="publications"') < html.indexOf('<section id="projects"'));
   assert.match(html, /<section id="projects"/);
   assert.match(html, /<div class="project-list">/);
   assert.match(html, /<div class="publication-list">/);
@@ -67,7 +70,7 @@ test("builds a reviewable static homepage preview", () => {
   assert.ok(projectsHtml.indexOf("Dexterous Arm-Hand Teleoperation System") < projectsHtml.indexOf("Multifunctional Mobile Robotic Platform"));
   assert.ok(
     projectsHtml.indexOf("Multifunctional Mobile Robotic Platform") <
-      projectsHtml.indexOf("Validating Diffusion-Based Visual Imitation Learning for Robotic Manipulation"),
+      projectsHtml.indexOf("Validating Diffusion-Based Visual Imitation Learning for Robotic Manipulation")
   );
   assert.doesNotMatch(projectsHtml, /media-keywords/);
   assert.doesNotMatch(projectsHtml, /home-feature-keywords/);
@@ -79,7 +82,10 @@ test("builds a reviewable static homepage preview", () => {
   assert.match(projectsHtml, /Guowei HUAI, Jiahong CHEN, Qingyun WANG, Pengfei MAI/);
   assert.match(projectsHtml, /Advisors: Arthur Kar Leung LIN, Jun MA, Jie SONG/);
   assert.match(projectsHtml, /RBM Team Project/);
-  assert.doesNotMatch(mobileProjectHtml, /href="https:\/\/scholar\.google\.com\/citations\?hl=en&user=kBN1B6YAAAAJ&view_op=list_works&sortby=pubdate">Jie SONG<\/a>/);
+  assert.doesNotMatch(
+    mobileProjectHtml,
+    /href="https:\/\/scholar\.google\.com\/citations\?hl=en&user=kBN1B6YAAAAJ&view_op=list_works&sortby=pubdate">Jie SONG<\/a>/
+  );
   assert.doesNotMatch(mobileProjectHtml, /Project Page/);
   assert.doesNotMatch(mobileProjectHtml, /arXiv/);
   assert.doesNotMatch(mobileProjectHtml, /Code/);
@@ -94,11 +100,11 @@ test("builds a reviewable static homepage preview", () => {
   assert.match(projectsHtml, /<p class="paper-links"><a href="#">Project Page<\/a> \/ <a href="#">arXiv<\/a> \/ <a href="#">Code<\/a><\/p>/);
   assert.match(
     html,
-    /Guowei HUAI, <a href="https:\/\/zdchan\.github\.io\/">Hui ZHANG<\/a>, <a href="https:\/\/scholar\.google\.com\/citations\?hl=en&user=kBN1B6YAAAAJ&view_op=list_works&sortby=pubdate">Jie SONG<\/a>/,
+    /Guowei HUAI, <a href="https:\/\/zdchan\.github\.io\/">Hui ZHANG<\/a>, <a href="https:\/\/scholar\.google\.com\/citations\?hl=en&user=kBN1B6YAAAAJ&view_op=list_works&sortby=pubdate">Jie SONG<\/a>/
   );
   assert.match(
     html,
-    /<a href="https:\/\/hly-123\.github\.io\/">Linyi HUANG<\/a>, Guowei HUAI, Weibin LIU, Shulong JIANG, Ping TAN, <a href="https:\/\/zdchan\.github\.io\/">Hui ZHANG<\/a>, <a href="https:\/\/scholar\.google\.com\/citations\?hl=en&user=kBN1B6YAAAAJ&view_op=list_works&sortby=pubdate">Jie SONG<\/a>/,
+    /<a href="https:\/\/hly-123\.github\.io\/">Linyi HUANG<\/a>, Guowei HUAI, Weibin LIU, Shulong JIANG, Ping TAN, <a href="https:\/\/zdchan\.github\.io\/">Hui ZHANG<\/a>, <a href="https:\/\/scholar\.google\.com\/citations\?hl=en&user=kBN1B6YAAAAJ&view_op=list_works&sortby=pubdate">Jie SONG<\/a>/
   );
   assert.match(html, /Guowei HUAI, <a href="https:\/\/hly-123\.github\.io\/">Linyi HUANG<\/a>/);
   assert.doesNotMatch(html, /MPhil Full Scholarship, RBM Program, HKUST\(GZ\), 240,000 RMB over 2 years/);

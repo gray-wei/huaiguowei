@@ -5,8 +5,8 @@ description: A mobile manipulation platform integrating legged locomotion, arm c
 importance: 4
 category: robotics
 authors: Guowei HUAI, Jiahong CHEN, Qingyun WANG, Pengfei MAI
-authors_html: 'Guowei HUAI, Jiahong CHEN, Qingyun WANG, Pengfei MAI'
-advisors_html: 'Arthur Kar Leung LIN, Jun MA, Jie SONG'
+authors_html: "Guowei HUAI, Jiahong CHEN, Qingyun WANG, Pengfei MAI"
+advisors_html: "Arthur Kar Leung LIN, Jun MA, Jie SONG"
 status: RBM Team Project
 video: /assets/video/research/rbm-final-project.mp4
 media_label: Mobile Robot

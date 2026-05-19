@@ -5,7 +5,7 @@ description: Fine-tuning Robotics Diffusion Transformer on self-collected AIRBOT
 importance: 5
 category: robotics
 authors: Yiming ZHU, Jiahong CHEN, Guowei HUAI
-authors_html: 'Yiming ZHU, Jiahong CHEN, Guowei HUAI'
+authors_html: "Yiming ZHU, Jiahong CHEN, Guowei HUAI"
 status: Course project
 image: /assets/img/projects/rdt-airbot-state-test.gif
 media_label: RDT
