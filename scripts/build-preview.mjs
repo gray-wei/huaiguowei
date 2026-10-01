@@ -83,8 +83,8 @@ function renderHome() {
       <aside class="profile"><img class="portrait" src="${person.portrait}" width="176" height="216" alt="Guowei Huai" fetchpriority="high" /></aside>
     </section>
     <section class="updates" aria-labelledby="updates-heading"><h2 id="updates-heading">News</h2><ul>
-      <li><time datetime="2026-09">Sept. 2026</time><span>Started my PhD in Robotics and Autonomous Systems at HKUST (Guangzhou).</span></li>
-      <li><time datetime="2026">2026</time><span>${link("HiFun", publication.project)} accepted to <strong>CoRL 2026</strong>.</span></li>
+      <li><span class="news-icon" aria-hidden="true">🎓</span><time datetime="2026-09">Sept. 2026</time><span class="news-text">Started my PhD in Robotics and Autonomous Systems at HKUST (Guangzhou).</span></li>
+      <li><span class="news-icon" aria-hidden="true">🎉</span><time datetime="2026-09">Sept. 2026</time><span class="news-text">${link("HiFun", publication.project)} accepted to <strong>CoRL 2026</strong>.</span></li>
     </ul></section>
     <section class="research-section" id="publications" aria-labelledby="publications-heading">
       <div class="section-heading"><h2 id="publications-heading">Publications</h2></div>
