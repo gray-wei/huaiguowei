@@ -30,11 +30,13 @@ nav a:hover { color: var(--ink); text-decoration: none; }
 .research-focus { color: var(--muted); font-size: var(--text-small); margin: 16px 0 0; }
 .portrait { display: block; width: 176px; height: 216px; object-fit: cover; object-position: center 38%; border-radius: 18px; background: var(--soft); }
 .contact-links { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; margin-top: 20px; font-size: var(--text-small); }
-.updates { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 26px; margin: 0 0 56px; }
-.updates h2 { font-size: var(--text-small); font-weight: 600; letter-spacing: 0; padding-top: 3px; }
-.updates ul { list-style: none; padding: 0; margin: 0; font-size: var(--text-small); }
-.updates li { display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: 18px; }
-.updates li + li { margin-top: 7px; }
+.updates { margin: 0 0 56px; }
+.updates h2 { margin-bottom: 16px; }
+.updates ul { list-style: none; padding: 0; margin: 0; font-size: var(--text-body); }
+.updates li { display: grid; grid-template-columns: 20px 92px minmax(0, 1fr); gap: 14px; align-items: baseline; }
+.updates li + li { margin-top: 12px; }
+.news-icon { font-size: var(--text-title); line-height: 1.3; }
+.updates time { white-space: nowrap; }
 .updates strong { font-weight: 500; }
 time, .entry-date { font-size: var(--text-small); color: var(--muted); }
 .research-section { margin-bottom: 56px; }
@@ -118,8 +120,12 @@ time, .entry-date { font-size: var(--text-small); color: var(--muted); }
   .portrait { width: 96px; height: 118px; border-radius: 12px; }
   .intro-role, .bio, .research-focus, .contact-links { grid-column: 1 / -1; margin: 0; }
   .contact-links { gap: 20px; }
-  .updates { grid-template-columns: 1fr; gap: 12px; margin-bottom: 48px; }
-  .updates li { grid-template-columns: 68px minmax(0, 1fr); gap: 12px; }
+  .updates { margin-bottom: 48px; }
+  .updates li { grid-template-columns: 20px minmax(0, 1fr); gap: 3px 12px; }
+  .updates li + li { margin-top: 16px; }
+  .news-icon { grid-column: 1; grid-row: 1 / span 2; align-self: start; padding-top: 1px; }
+  .updates time { grid-column: 2; grid-row: 1; }
+  .news-text { grid-column: 2; grid-row: 2; }
   .section-heading { margin-bottom: 18px; }
   .publication-item, .project-item { grid-template-columns: 1fr; gap: 18px; }
   .portrait-media video { aspect-ratio: 16 / 9; }
