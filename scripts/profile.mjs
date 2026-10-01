@@ -100,7 +100,6 @@ export const service = [
 export const honors = [
   { title: "First Prize · Bionic Robot Innovation Competition", description: "HKUST (Guangzhou), MoSense team · 50,000 RMB", date: "Oct. 2025" },
   { title: "Quarterfinalist · 1st WBCD Competition", description: "ICRA 2025 · Top 8", date: "May 2025" },
-  { title: "MPhil Full Scholarship · RBM Program", description: "HKUST (Guangzhou) · 240,000 RMB over 2 years", date: "Sept. 2024" },
   { title: "Principal’s First-Class Scholarship", description: "BITZH · 30,000 RMB · 1/2000", date: "Apr. 2023" },
   { title: "Climbing Plan Science and Technology Innovation Project Award", description: "30,000 RMB", date: "May 2021" },
 ];
