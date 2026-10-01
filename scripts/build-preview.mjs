@@ -5,6 +5,15 @@ import { person, publication, projects, teleoperation, education, service, honor
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const outDir = join(root, "_site");
+const analytics = process.argv.includes("--production") ? `
+  <!-- Statcounter: private, invisible tracking for the published site only. -->
+  <script>
+    var sc_project = 13357798;
+    var sc_invisible = 1;
+    var sc_security = "a8c60567";
+  </script>
+  <script src="https://www.statcounter.com/counter/counter.js" async></script>
+  <noscript><div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank" rel="noopener"><img class="statcounter" src="https://c.statcounter.com/13357798/0/a8c60567/1/" alt="Web Analytics" referrerpolicy="no-referrer-when-downgrade" /></a></div></noscript>` : "";
 const escapeHtml = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 const link = (label, href, className = "") => `<a${className ? ` class="${className}"` : ""} href="${escapeHtml(href)}">${escapeHtml(label)}</a>`;
 const resourceLink = (label, href) => `<a class="action-link" href="${escapeHtml(href)}"><span>${escapeHtml(label)}</span><span class="link-arrow" aria-hidden="true">↗</span></a>`;
@@ -41,6 +50,7 @@ function document(title, description, body, prefix = "") {
   </header>
   ${body}
   <footer class="site-footer"><span>Guowei Huai · Updated October 2026</span>${link("GitHub", person.github)}${link("Back to top ↑", "#top")}</footer>
+  ${analytics}
 </body>
 </html>`;
 }

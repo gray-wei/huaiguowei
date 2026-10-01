@@ -11,6 +11,25 @@ const output = join(root, "_site");
 const pages = ["index.html", "projects/teleoperation/index.html"];
 const home = readFileSync(join(output, pages[0]), "utf8");
 
+test("analytics tracks both published pages and stays disabled in local previews", () => {
+  for (const relative of pages) {
+    assert.doesNotMatch(readFileSync(join(output, relative), "utf8"), /statcounter\.com|sc_project/);
+  }
+  try {
+    execFileSync(process.execPath, ["scripts/build-preview.mjs", "--production"], { cwd: root, stdio: "pipe" });
+    for (const relative of pages) {
+      const html = readFileSync(join(output, relative), "utf8");
+      assert.match(html, /sc_project = 13357798/);
+      assert.match(html, /sc_invisible = 1/);
+      assert.match(html, /sc_security = "a8c60567"/);
+      assert.equal([...html.matchAll(/src="https:\/\/www\.statcounter\.com\/counter\/counter\.js" async/g)].length, 1);
+      assert.match(html, /<noscript>[\s\S]*https:\/\/c\.statcounter\.com\/13357798\/0\/a8c60567\/1\/[\s\S]*<\/noscript>/);
+    }
+  } finally {
+    execFileSync(process.execPath, ["scripts/build-preview.mjs"], { cwd: root, stdio: "pipe" });
+  }
+});
+
 test("publishes current academic identity and complete HiFun information", () => {
   assert.match(home, /PhD student in Robotics and Autonomous Systems/);
   assert.match(home, /mailto:ghuai073@connect\.hkust-gz\.edu\.cn/);
