@@ -17,9 +17,9 @@ function authors(items) {
 }
 function media(item, prefix = "") {
   return `<figure class="research-media${item.portrait ? " portrait-media" : ""}">
-    <video controls${item.muted === false ? "" : " muted"}${item.loop === false ? "" : " loop"} playsinline preload="${escapeHtml(item.preload || "metadata")}" poster="${prefix}${item.poster}" aria-label="${escapeHtml(item.caption)}">
+    <div class="media-frame"><video controls${item.muted === false ? "" : " muted"}${item.loop === false ? "" : " loop"} playsinline preload="${escapeHtml(item.preload || "metadata")}" poster="${prefix}${item.poster}" aria-label="${escapeHtml(item.caption)}">
       <source src="${prefix}${item.video}" type="video/mp4" />${link("Download the demo", prefix + item.video)}
-    </video><figcaption>${escapeHtml(item.caption)}</figcaption>
+    </video></div><figcaption>${escapeHtml(item.caption)}</figcaption>
   </figure>`;
 }
 function document(title, description, body, prefix = "") {

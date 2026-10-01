@@ -37,8 +37,8 @@ export const publication = {
   poster: "assets/img/research/hifun-overview.webp",
   // Original Overview video and poster from Linyi Huang's HiFun project page.
   videoSource: "https://hly-123.github.io/HiFun/assets/media/supplementary.mp4",
-  muted: false,
-  loop: false,
+  muted: true,
+  loop: true,
   preload: "none",
   caption: "HiFun overview: method and real-world experiments.",
 };
@@ -50,11 +50,11 @@ export const teleoperation = {
     summary: "A shared interface for Manus and Vision Pro retargeting across dexterous hands, with coordinated Franka control and synchronized tactile data.",
     video: "assets/video/research/teleop-preview.mp4", poster: "assets/img/research/teleop-poster.jpg",
     caption: "Vision Pro arm–hand teleoperation on Franka. Operator: Guowei Huai.", portrait: true,
-    loop: false, preload: "none",
+    loop: true, preload: "none",
     additionalDemos: [{
       video: "assets/video/research/gello-manus-redacted.mp4", poster: "assets/img/research/gello-manus-redacted.jpg",
       caption: "GELLO + Manus arm–hand teleoperation on Franka. Operator: Linyi Huang.",
-      loop: false, preload: "none",
+      loop: true, preload: "none",
     }],
     links: [["Full project & demos", "projects/teleoperation/"]],
 };

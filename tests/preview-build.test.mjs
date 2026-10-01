@@ -44,9 +44,11 @@ test("every local page link, anchor and media reference resolves", () => {
 
 test("original HiFun overview and compact project demos have controls and posters", () => {
   assert.equal([...home.matchAll(/<video\b/g)].length, 4);
-  assert.doesNotMatch(home, /\bautoplay\b/);
+  assert.doesNotMatch(home, /\bautoplay\b/); // JavaScript starts visible demos, rather than every video at page load.
   for (const [, attributes] of home.matchAll(/<video\b([^>]+)>/g)) {
     assert.match(attributes, /\bcontrols\b/);
+    assert.match(attributes, /\bmuted\b/);
+    assert.match(attributes, /\bloop\b/);
     assert.match(attributes, /preload="(?:none|metadata)"/);
     assert.match(attributes, /poster="assets\/img\/research\//);
     assert.match(attributes, /aria-label="[^"]+"/);
@@ -56,7 +58,7 @@ test("original HiFun overview and compact project demos have controls and poster
   assert.match(publicationHtml, /poster="assets\/img\/research\/hifun-overview\.webp"/);
   assert.match(publicationHtml, /preload="none"/);
   const overviewAttributes = /<video\b([^>]+)>/.exec(publicationHtml)[1];
-  assert.doesNotMatch(overviewAttributes, /\bmuted\b|\bloop\b/);
+  assert.match(overviewAttributes, /\bmuted\b.*\bloop\b/);
   const overview = statSync(join(output, "assets/video/research/hifun-overview.mp4"));
   assert.ok(overview.size > 20_000_000 && overview.size < 30_000_000, "Use the full project overview video");
   for (const name of ["mobile", "rdt"]) {
