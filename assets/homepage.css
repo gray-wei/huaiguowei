@@ -86,11 +86,15 @@ time, .entry-date { font-size: var(--text-small); color: var(--muted); }
 .project-item { display: grid; grid-template-columns: 34% minmax(0, 1fr); grid-template-rows: auto 1fr; column-gap: 38px; align-items: start; }
 .project-heading { grid-column: 2; grid-row: 1; }
 .project-copy { grid-column: 2; grid-row: 2; }
-.project-media-stack { grid-column: 1; grid-row: 1 / span 2; display: grid; gap: 26px; }
+.project-primary-media { grid-column: 1; grid-row: 1 / span 2; }
 .project-item + .project-item { margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--line); }
 .project-heading .eyebrow { margin-bottom: 6px; }
-.project-module { margin-top: 24px; padding-left: 20px; border-left: 1px solid var(--line); transition: border-color 220ms ease-out; }
-.project-module:focus-within { border-color: #bac7da; }
+.project-module { grid-column: 1 / -1; display: grid; grid-template-columns: 34% minmax(0, 1fr); grid-template-rows: auto 1fr; column-gap: 38px; align-items: start; margin-top: 26px; }
+.module-heading { grid-column: 2; grid-row: 1; }
+.module-copy { grid-column: 2; grid-row: 2; }
+.module-media { grid-column: 1; grid-row: 1 / span 2; }
+.module-heading, .module-copy { padding-left: 20px; border-left: 1px solid var(--line); transition: border-color 220ms ease-out; }
+.project-module:focus-within .module-heading, .project-module:focus-within .module-copy { border-color: #bac7da; }
 .project-module h4 { font-size: var(--text-body); line-height: 1.4; }
 .project-module .authors { margin: 6px 0 10px; }
 .project-module .resource-links { margin-top: 10px; }
@@ -140,7 +144,7 @@ time, .entry-date { font-size: var(--text-small); color: var(--muted); }
   .bio,
   .publication-copy > p:not(.venue, .authors, .resource-links),
   .project-copy > p:not(.resource-links),
-  .project-module > p:not(.authors, .resource-links),
+  .module-copy > p:not(.resource-links),
   .details-copy p,
   .service-description,
   .project-lead,
@@ -171,8 +175,13 @@ time, .entry-date { font-size: var(--text-small); color: var(--muted); }
   .publication-item, .project-item { grid-template-columns: 1fr; gap: 24px; }
   .project-item { grid-template-rows: auto auto auto; }
   .project-heading { grid-column: 1; grid-row: 1; }
-  .project-media-stack { grid-column: 1; grid-row: 2; }
+  .project-primary-media { grid-column: 1; grid-row: 2; }
   .project-copy { grid-column: 1; grid-row: 3; }
+  .project-module { grid-template-columns: 1fr; grid-template-rows: auto auto auto; gap: 24px; padding-left: 16px; border-left: 1px solid var(--line); }
+  .module-heading, .module-copy { grid-column: 1; padding-left: 0; border-left: 0; }
+  .module-heading { grid-row: 1; }
+  .module-media { grid-column: 1; grid-row: 2; }
+  .module-copy { grid-row: 3; }
   .portrait-media video { aspect-ratio: 16 / 9; }
   .results { gap: 12px 16px; }
   .results div + div::before { left: -8px; }
@@ -206,14 +215,14 @@ time, .entry-date { font-size: var(--text-small); color: var(--muted); }
   .media-frame:hover::after { opacity: 1; }
   .media-frame.is-hovered:not(.is-playing):not(:focus-within) { transform: translateY(-3px); }
   .reading-details summary:hover { color: var(--ink); background: var(--soft); }
-  .project-module:has(.action-link:hover, summary:hover) { border-color: #bac7da; }
+  .project-module:has(.action-link:hover, summary:hover) .module-heading, .project-module:has(.action-link:hover, summary:hover) .module-copy { border-color: #bac7da; }
 }
 @media (hover: none) {
   .action-link, .reading-details summary { min-height: 44px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  a, nav a::after, .action-link > span:first-child::after, .link-arrow, .media-frame, .media-frame::after, .reading-details summary, .disclosure-arrow, .project-module { transition: none; }
+  a, nav a::after, .action-link > span:first-child::after, .link-arrow, .media-frame, .media-frame::after, .reading-details summary, .disclosure-arrow, .module-heading, .module-copy { transition: none; }
   .action-link:hover .link-arrow, .action-link:focus-visible .link-arrow { transform: none; }
   .media-frame.is-hovered:not(.is-playing):not(:focus-within) { transform: none; }
   .reading-details[open] .details-copy { animation: none; }
