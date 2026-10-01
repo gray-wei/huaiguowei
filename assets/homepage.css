@@ -136,6 +136,16 @@ time, .entry-date { font-size: var(--text-small); color: var(--muted); }
 .project-page .portrait-media video { aspect-ratio: 4 / 3; max-height: 500px; }
 .project-page section { margin-bottom: 32px; }
 .project-page section h2 { font-size: var(--text-title); margin-bottom: 10px; }
+@media (min-width: 761px) {
+  .bio,
+  .publication-copy > p:not(.venue, .authors, .resource-links),
+  .project-copy > p:not(.resource-links),
+  .project-module > p:not(.authors, .resource-links),
+  .details-copy p,
+  .service-description,
+  .project-lead,
+  .project-page section > p { text-align: justify; text-align-last: start; hyphens: auto; }
+}
 @media (max-width: 760px) {
   :root { --text-body: 17px; --text-small: 14px; --text-title: 21px; --text-section: 29px; }
   .site-header, .page-shell, .site-footer { width: calc(100% - 40px); }
