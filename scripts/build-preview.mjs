@@ -1,10 +1,14 @@
-import { cpSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { person, publication, projects, teleoperation, education, service, honors } from "./profile.mjs";
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const outDir = join(root, "_site");
+const cvPath = "assets/pdf/cv/Guowei_Huai_CV.pdf";
+const cvVersion = createHash("sha256").update(readFileSync(join(root, cvPath))).digest("hex").slice(0, 12);
+const cvHref = `${cvPath}?v=${cvVersion}`;
 const analytics = process.argv.includes("--production") ? `
   <!-- Statcounter: private, invisible tracking for the published site only. -->
   <script>
@@ -46,7 +50,7 @@ function document(title, description, body, prefix = "") {
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">${link("Guowei Huai", prefix || "#top", "wordmark")}
-    <nav aria-label="Main navigation">${link("Research", prefix + "#publications")}${link("Background", prefix + "#background")}${link("CV", prefix + "assets/pdf/cv/Guowei_Huai_CV.pdf")}</nav>
+    <nav aria-label="Main navigation">${link("Research", prefix + "#publications")}${link("Background", prefix + "#background")}${link("CV", prefix + cvHref)}</nav>
   </header>
   ${body}
   <footer class="site-footer"><span>Guowei Huai · Updated October 2026</span>${link("GitHub", person.github)}${link("Back to top ↑", "#top")}</footer>
@@ -93,7 +97,7 @@ function renderHome() {
         <p class="bio">I am a PhD student at ${escapeHtml(person.university)}, advised by ${link(person.supervisor.name, person.supervisor.url)}. ${escapeHtml(person.educationSummary)}</p>
         <p class="bio">My research focuses on <strong>dexterous manipulation and real-world robot learning</strong>, with an emphasis on <strong>reinforcement learning and learning from human data</strong>. I explore how human data can support robot policy pre-training and post-training, including fine-tuning for real-world tasks. My work spans contact-rich tool use, in-hand manipulation, and teleoperation, combining learning-based control with human guidance and tactile sensing.</p>
         <p class="research-focus">${person.focus.map(escapeHtml).join(" · ")}</p>
-        <div class="contact-links">${resourceLink("Email", "mailto:" + person.email)}${resourceLink("CV", "assets/pdf/cv/Guowei_Huai_CV.pdf")}${resourceLink("GitHub", person.github)}</div>
+        <div class="contact-links">${resourceLink("Email", "mailto:" + person.email)}${resourceLink("CV", cvHref)}${resourceLink("GitHub", person.github)}</div>
       </div>
       <aside class="profile"><img class="portrait" src="${person.portrait}" width="176" height="216" alt="Guowei Huai" fetchpriority="high" /></aside>
     </section>
