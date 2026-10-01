@@ -100,7 +100,7 @@ function renderHome() {
         <div class="publication-evidence">
           <dl class="results">${publication.results.map((result) => `<div><dt>${escapeHtml(result.label)}</dt><dd>${escapeHtml(result.value)}</dd></div>`).join("")}</dl>
         </div>
-        <p class="resource-links">${resourceLink("Project page", publication.project)}${resourceLink("Paper", publication.paper)}${resourceLink("Full-resolution video", publication.originalVideo)}</p>
+        <p class="resource-links">${resourceLink("Project page", publication.project)}${resourceLink("Paper", publication.paper)}</p>
         ${readingDetails("Method & training details", `<p>${escapeHtml(publication.description)}</p><p class="training-note">${escapeHtml(publication.training)}</p>`)}
       </div></article>
     </section>
