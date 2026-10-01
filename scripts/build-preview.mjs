@@ -17,8 +17,8 @@ function authors(items) {
 }
 function media(item, prefix = "") {
   return `<figure class="research-media${item.portrait ? " portrait-media" : ""}">
-    <div class="media-frame"><video controls${item.muted === false ? "" : " muted"}${item.loop === false ? "" : " loop"} playsinline preload="${escapeHtml(item.preload || "metadata")}" poster="${prefix}${item.poster}" aria-label="${escapeHtml(item.caption)}">
-      <source src="${prefix}${item.video}" type="video/mp4" />${link("Download the demo", prefix + item.video)}
+    <div class="media-frame"><video controls${item.muted === false ? "" : " muted"}${item.loop === false ? "" : " loop"} playsinline preload="${escapeHtml(item.preload || "none")}" poster="${prefix}${item.poster}" aria-label="${escapeHtml(item.caption)}">
+      <source src="${prefix}${item.video}" type="video/mp4" />${link("Download the demo", prefix + (item.originalVideo || item.video))}
     </video></div><figcaption>${escapeHtml(item.caption)}</figcaption>
   </figure>`;
 }
@@ -100,7 +100,7 @@ function renderHome() {
         <div class="publication-evidence">
           <dl class="results">${publication.results.map((result) => `<div><dt>${escapeHtml(result.label)}</dt><dd>${escapeHtml(result.value)}</dd></div>`).join("")}</dl>
         </div>
-        <p class="resource-links">${resourceLink("Project page", publication.project)}${resourceLink("Paper", publication.paper)}</p>
+        <p class="resource-links">${resourceLink("Project page", publication.project)}${resourceLink("Paper", publication.paper)}${resourceLink("Full-resolution video", publication.originalVideo)}</p>
         ${readingDetails("Method & training details", `<p>${escapeHtml(publication.description)}</p><p class="training-note">${escapeHtml(publication.training)}</p>`)}
       </div></article>
     </section>
@@ -124,7 +124,7 @@ function renderTeleoperation() {
     <main class="page-shell project-page" id="main">
       <div id="top"><p class="eyebrow">Mobile robotic platform · Teleoperation module</p><h1>${item.title}</h1><p class="authors">${authors(item.authors)}</p><p class="entry-date">May 2025 – March 2026</p></div>
       <p class="project-lead">A platform for collecting coordinated arm–hand demonstrations across dexterous hands, with tactile sensing and robot-state synchronization.</p>
-      ${media(item, "../../")}
+      ${media({ ...item, video: item.originalVideo }, "../../")}
       <section><h2>Manus retargeting and a unified interface</h2><p>Developed optimization-based retargeting for Manus glove signals using vector and fingertip objectives, alongside Vision Pro hand-tracking inputs. Both input paths are unified in one repository with a common interface for mapping human hand motion to Inspire Hand, Leap Hand, XHand, and Sharpa.</p></section>
       <section><h2>Coordinated arm teleoperation</h2><p>GELLO controls the Franka arm while Manus glove retargeting drives the dexterous hand, enabling coordinated arm–hand demonstrations. Franka control also supports a 3D mouse and Vision Pro end-effector control.</p>${item.additionalDemos.map((demo) => media(demo, "../../")).join("")}</section>
       <section><h2>Multimodal demonstration data</h2><p>Piezoresistive, electromagnetic, and vision-based tactile sensors are integrated with robot states and demonstrations. Synchronized streams support real-world reinforcement and imitation learning.</p></section>
@@ -139,7 +139,7 @@ writeFileSync(join(outDir, "index.html"), renderHome());
 writeFileSync(join(outDir, "projects", "teleoperation", "index.html"), renderTeleoperation());
 const files = ["assets/homepage.css", "assets/homepage.js", "assets/img/favicon.svg", person.portrait,
   "assets/pdf/cv/Guowei_Huai_CV.pdf",
-  ...[publication, ...projects, teleoperation, ...teleoperation.additionalDemos].flatMap((item) => [item.video, item.poster])];
+  ...[publication, ...projects, teleoperation, ...teleoperation.additionalDemos].flatMap((item) => [item.video, item.poster, ...(item.originalVideo ? [item.originalVideo] : [])])];
 for (const relative of new Set(files)) {
   const destination = join(outDir, relative);
   mkdirSync(dirname(destination), { recursive: true });

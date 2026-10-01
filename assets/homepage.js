@@ -1,4 +1,4 @@
-// Play one visible demo quietly; native controls always take precedence.
+// Each visible demo plays independently; native controls take precedence.
 const videos = [...document.querySelectorAll("video")];
 const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
 const visibility = new Map();
@@ -6,38 +6,26 @@ const pausedByVisitor = new WeakSet();
 const blockedAutoplay = new WeakSet();
 const automaticStarts = new WeakSet();
 const automaticPauses = new WeakSet();
-let manualPlayback;
+const manualPlayback = new WeakSet();
 function pauseAutomatically(video) {
   if (video.paused) return;
   automaticPauses.add(video);
   video.pause();
 }
 function updateAutoplay() {
-  if (document.hidden) {
-    for (const video of videos) pauseAutomatically(video);
-    return;
-  }
-  if (motionPreference.matches) {
-    for (const video of videos) if (video !== manualPlayback || (visibility.get(video) || 0) < 0.15) pauseAutomatically(video);
-    return;
-  }
-  if (manualPlayback && !manualPlayback.paused && (visibility.get(manualPlayback) || 0) >= 0.15) return;
-  const candidates = videos.filter((video) => (visibility.get(video) || 0) >= 0.55 && !pausedByVisitor.has(video) && !blockedAutoplay.has(video));
-  const distance = (video) => {
-    const bounds = video.getBoundingClientRect();
-    return Math.abs(bounds.top + bounds.height / 2 - window.innerHeight / 2);
-  };
-  const next = candidates.sort((a, b) => distance(a) - distance(b))[0];
-  for (const video of videos) if (video !== next) pauseAutomatically(video);
-  if (next && next.paused) {
-    next.muted = true;
-    automaticStarts.add(next);
-    next.play().catch((error) => {
-      automaticStarts.delete(next);
-      if (error.name !== "AbortError") {
-        blockedAutoplay.add(next);
-        updateAutoplay();
-      }
+  for (const video of videos) {
+    const ratio = visibility.get(video) || 0;
+    const manual = manualPlayback.has(video) && !video.paused;
+    if (document.hidden || ratio < 0.15 || (motionPreference.matches && !manual)) {
+      pauseAutomatically(video);
+      continue;
+    }
+    if (manual || motionPreference.matches || ratio < 0.55 || pausedByVisitor.has(video) || blockedAutoplay.has(video) || !video.paused) continue;
+    video.muted = true;
+    automaticStarts.add(video);
+    video.play().catch((error) => {
+      automaticStarts.delete(video);
+      if (error.name !== "AbortError") blockedAutoplay.add(video);
     });
   }
 }
@@ -69,14 +57,14 @@ for (const video of videos) {
   video.addEventListener("play", () => {
     const automatic = automaticStarts.delete(video);
     if (video.paused) return;
-    if (!automatic) manualPlayback = video;
+    if (automatic) manualPlayback.delete(video);
+    else manualPlayback.add(video);
     pausedByVisitor.delete(video);
-    for (const other of videos) if (other !== video) pauseAutomatically(other);
   });
   video.addEventListener("pause", () => {
     if (automaticPauses.delete(video)) return;
     pausedByVisitor.add(video);
-    if (manualPlayback === video) manualPlayback = undefined;
+    manualPlayback.delete(video);
     updateAutoplay();
   });
 }

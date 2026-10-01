@@ -33,7 +33,8 @@ export const publication = {
   summary: "A hierarchical reinforcement learning framework for contact-rich tool use, separating hand skills from arm motion to support efficient learning and recovery.",
   results: [{ value: "98.3%", label: "mean success" }, { value: "6", label: "evaluated tasks" }, { value: "2", label: "dexterous hands" }],
   training: "Up to 60 min of online human-in-the-loop training per task; the full pipeline averages approximately 109 min per task.",
-  video: "assets/video/research/hifun-overview.mp4",
+  video: "assets/video/research/hifun-overview-web.mp4",
+  originalVideo: "assets/video/research/hifun-overview.mp4",
   poster: "assets/img/research/hifun-overview.webp",
   // Original Overview video and poster from Linyi Huang's HiFun project page.
   videoSource: "https://hly-123.github.io/HiFun/assets/media/supplementary.mp4",
@@ -48,7 +49,7 @@ export const teleoperation = {
     authors: [{ name: "Guowei Huai", self: true }, { name: "Linyi Huang", url: "https://hly-123.github.io/" }],
     description: "Manus glove retargeting and Vision Pro hand tracking share a common interface in one repository, mapping human hand motion to Inspire Hand, Leap Hand, XHand, and Sharpa with optimization-based vector and fingertip objectives. Franka arm control combines GELLO with hand retargeting and also supports a 3D mouse and Vision Pro. The platform synchronizes tactile sensing, robot states, and demonstrations for real-world reinforcement and imitation learning.",
     summary: "A shared interface for Manus and Vision Pro retargeting across dexterous hands, with coordinated Franka control and synchronized tactile data.",
-    video: "assets/video/research/teleop-preview.mp4", poster: "assets/img/research/teleop-poster.jpg",
+    video: "assets/video/research/teleop-web.mp4", originalVideo: "assets/video/research/teleop-preview.mp4", poster: "assets/img/research/teleop-poster.jpg",
     caption: "Vision Pro arm–hand teleoperation on Franka. Operator: Guowei Huai.", portrait: true,
     loop: true, preload: "none",
     additionalDemos: [{

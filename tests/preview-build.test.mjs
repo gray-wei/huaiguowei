@@ -49,18 +49,21 @@ test("original HiFun overview and compact project demos have controls and poster
     assert.match(attributes, /\bcontrols\b/);
     assert.match(attributes, /\bmuted\b/);
     assert.match(attributes, /\bloop\b/);
-    assert.match(attributes, /preload="(?:none|metadata)"/);
+    assert.match(attributes, /preload="none"/);
     assert.match(attributes, /poster="assets\/img\/research\//);
     assert.match(attributes, /aria-label="[^"]+"/);
   }
   const publicationHtml = home.slice(home.indexOf('id="publications"'), home.indexOf('id="projects"'));
-  assert.match(publicationHtml, /src="assets\/video\/research\/hifun-overview\.mp4"/);
+  assert.match(publicationHtml, /src="assets\/video\/research\/hifun-overview-web\.mp4"/);
+  assert.match(publicationHtml, /href="assets\/video\/research\/hifun-overview\.mp4"/);
   assert.match(publicationHtml, /poster="assets\/img\/research\/hifun-overview\.webp"/);
   assert.match(publicationHtml, /preload="none"/);
   const overviewAttributes = /<video\b([^>]+)>/.exec(publicationHtml)[1];
   assert.match(overviewAttributes, /\bmuted\b.*\bloop\b/);
   const overview = statSync(join(output, "assets/video/research/hifun-overview.mp4"));
   assert.ok(overview.size > 20_000_000 && overview.size < 30_000_000, "Use the full project overview video");
+  assert.ok(statSync(join(output, "assets/video/research/hifun-overview-web.mp4")).size < overview.size / 2, "The streaming copy should be smaller than the original");
+  assert.deepEqual(readFileSync(join(output, "assets/video/research/hifun-overview.mp4")), readFileSync(join(root, "assets/video/research/hifun-overview.mp4")));
   for (const name of ["mobile", "rdt"]) {
     assert.ok(statSync(join(output, `assets/video/research/${name}-teaser.mp4`)).size < 1_000_000);
   }
