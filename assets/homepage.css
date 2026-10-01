@@ -88,6 +88,11 @@ time, .entry-date { font-size: var(--text-small); color: var(--muted); }
 .closing-grid { margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--line); }
 .closing-grid h2 { font-size: var(--text-section); margin-bottom: 20px; }
 .closing-grid h3 { margin-bottom: 5px; }
+.service-list { list-style: none; padding: 0; margin: 0; }
+.service-list li + li { margin-top: 24px; }
+.service-list p { margin: 0; }
+.service-list .entry-date { margin-bottom: 4px; }
+.service-list .service-description { margin-top: 6px; color: var(--muted); font-size: var(--text-small); }
 .honors-list li { margin-bottom: 15px; }
 .honors-list strong { padding-right: 76px; }
 .site-footer { border-top: 1px solid var(--line); padding: 24px 0 32px; margin-top: 40px; color: var(--muted); display: flex; gap: 20px; font-size: var(--text-small); }
