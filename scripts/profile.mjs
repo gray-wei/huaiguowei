@@ -10,7 +10,7 @@ export const person = {
   portrait: "assets/img/profile/gray_pic.jpg",
   education: "Previously, I completed my MPhil through the Red Bird MPhil (RBM) Program at HKUST (Guangzhou) (2024–2026), advised by Jie Song. I received my B.Eng. in Computer Science from Beijing Institute of Technology, Zhuhai.",
   educationSummary: "I completed my MPhil through HKUST (Guangzhou)’s Red Bird MPhil (RBM) Program and received my B.Eng. in Computer Science from Beijing Institute of Technology, Zhuhai.",
-  focus: ["Human Data", "Pre-training & Post-training", "Dexterous Manipulation", "Teleoperation", "Tactile Sensing"],
+  focus: ["Reinforcement Learning", "Human Data", "Pre-training & Post-training", "Dexterous Manipulation", "Teleoperation", "Tactile Sensing"],
 };
 
 export const publication = {

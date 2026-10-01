@@ -74,14 +74,14 @@ function renderEducation(item) {
   </li>`;
 }
 function renderHome() {
-  return document("Guowei Huai | Dexterous Manipulation & Robot Learning", "Guowei Huai is a PhD student at HKUST (Guangzhou), exploring human data for robot policy pre-training and post-training, dexterous manipulation, and real-world robot learning.", `
+  return document("Guowei Huai | Dexterous Manipulation & Robot Learning", "Guowei Huai is a PhD student at HKUST (Guangzhou), working on reinforcement learning, human data for robot policy pre-training and post-training, and dexterous manipulation.", `
   <main class="page-shell" id="main">
     <section class="intro" id="top" aria-labelledby="name">
       <div class="intro-copy">
         <div class="name-line"><h1 id="name">Guowei Huai</h1><span lang="zh">怀国威</span></div>
         <p class="intro-role">${escapeHtml(person.degree)}</p>
         <p class="bio">I am a PhD student at ${escapeHtml(person.university)}, advised by ${link(person.supervisor.name, person.supervisor.url)}. ${escapeHtml(person.educationSummary)}</p>
-        <p class="bio">My research focuses on <strong>dexterous manipulation and real-world robot learning</strong>. I explore how <strong>human data</strong> can support robot policy pre-training and post-training, including fine-tuning for real-world tasks. My work spans contact-rich tool use, in-hand manipulation, and teleoperation, combining learning-based control with human guidance and tactile sensing.</p>
+        <p class="bio">My research focuses on <strong>dexterous manipulation and real-world robot learning</strong>, with an emphasis on <strong>reinforcement learning and learning from human data</strong>. I explore how human data can support robot policy pre-training and post-training, including fine-tuning for real-world tasks. My work spans contact-rich tool use, in-hand manipulation, and teleoperation, combining learning-based control with human guidance and tactile sensing.</p>
         <p class="research-focus">${person.focus.map(escapeHtml).join(" · ")}</p>
         <div class="contact-links">${resourceLink("Email", "mailto:" + person.email)}${resourceLink("CV", "assets/pdf/cv/Guowei_Huai_CV.pdf")}${resourceLink("GitHub", person.github)}</div>
       </div>
