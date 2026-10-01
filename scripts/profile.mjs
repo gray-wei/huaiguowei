@@ -82,6 +82,14 @@ export const education = [
   { title: "B.Eng. · Computer Science", school: "Beijing Institute of Technology, Zhuhai", date: "2019 – 2023" },
 ];
 
+export const service = [
+  { date: "May 2026", role: "Reviewer", organization: "ICRA 2026 Workshop on Manipulation Robustness" },
+  {
+    date: "May 2023 – Sept. 2024", role: "Course instructor & designer", organization: "Datawhale", url: "https://github.com/datawhalechina",
+    description: "Designed AI4S competition courses, built baselines for beginners, and led online teaching sessions.",
+  },
+];
+
 export const honors = [
   { title: "First Prize · Bionic Robot Innovation Competition", description: "HKUST (Guangzhou), MoSense team · 50,000 RMB", date: "Oct. 2025" },
   { title: "Quarterfinalist · 1st WBCD Competition", description: "ICRA 2025 · Top 8", date: "May 2025" },

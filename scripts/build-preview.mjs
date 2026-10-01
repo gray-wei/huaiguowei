@@ -1,7 +1,7 @@
 import { cpSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { person, publication, projects, teleoperation, education, honors } from "./profile.mjs";
+import { person, publication, projects, teleoperation, education, service, honors } from "./profile.mjs";
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const outDir = join(root, "_site");
@@ -108,7 +108,7 @@ function renderHome() {
       <ol class="education-list">${education.map(renderEducation).join("")}</ol>
     </section>
     <div class="background-grid closing-grid">
-      <section id="service" aria-labelledby="service-heading"><h2 id="service-heading">Academic service</h2><p class="entry-date">May 2026</p><h3>Reviewer</h3><p>ICRA 2026 Workshop on Manipulation Robustness</p></section>
+      <section id="service" aria-labelledby="service-heading"><h2 id="service-heading">Teaching &amp; service</h2><ul class="service-list">${service.map((item) => `<li><p class="entry-date">${escapeHtml(item.date)}</p><h3>${escapeHtml(item.role)}</h3><p>${item.url ? link(item.organization, item.url) : escapeHtml(item.organization)}</p>${item.description ? `<p class="service-description">${escapeHtml(item.description)}</p>` : ""}</li>`).join("")}</ul></section>
       <section id="honors" aria-labelledby="honors-heading"><h2 id="honors-heading">Honors &amp; awards</h2><ul class="entry-list honors-list">${honors.map((item) => `<li><time>${item.date}</time><strong>${item.title}</strong><span>${item.description}</span></li>`).join("")}</ul></section>
     </div>
   </main>`);
