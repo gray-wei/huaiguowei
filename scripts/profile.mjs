@@ -77,7 +77,7 @@ export const projects = [
 ];
 
 export const education = [
-  { title: "PhD · Robotics and Autonomous Systems", school: "HKUST (Guangzhou)", date: "2026 – present" },
+  { title: "PhD · Robotics and Autonomous Systems", school: "HKUST (Guangzhou)", date: "2026.09 – present" },
   { title: "MPhil · Robotics and Autonomous Systems", school: "HKUST (Guangzhou)", date: "2024.09 – 2026.09", details: "Red Bird MPhil (RBM) Program · GPA: 4.04/4.30", academicAdvisor: "Jie Song", projectAdvisor: "Arthur Kar Leung Lin" },
   { title: "B.Eng. · Computer Science", school: "Beijing Institute of Technology, Zhuhai", date: "2019 – 2023" },
 ];
