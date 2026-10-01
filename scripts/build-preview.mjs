@@ -49,13 +49,13 @@ function renderProject(item) {
       <p class="authors">${authors(item.authors)}</p>
       ${item.advisors ? `<p class="advisors">Advisors: ${escapeHtml(item.advisors)}</p>` : ""}
     </header>
-    <div class="project-media-stack">${(item.modules || []).map((module) => media(module)).join("")}${media(item)}</div>
+    <div class="project-primary-media">${media(item)}</div>
     <div class="project-copy">
       <p>${escapeHtml(item.summary || item.description)}</p>
       ${item.links.length ? `<p class="resource-links">${item.links.map(([label, href]) => resourceLink(label, href)).join("")}</p>` : ""}
       ${item.detailsLabel ? readingDetails(item.detailsLabel, `<p>${escapeHtml(item.details || item.description)}</p>`) : ""}
-      ${(item.modules || []).map((module) => `<section class="project-module" id="${module.id}" aria-labelledby="${module.id}-heading"><h4 id="${module.id}-heading">${escapeHtml(module.title)}</h4><p class="authors">Module contributors: ${authors(module.authors)}</p><p>${escapeHtml(module.summary)}</p><p class="resource-links">${module.links.map(([label, href]) => resourceLink(label, href)).join("")}</p>${readingDetails("Implementation details", `<p>${escapeHtml(module.description)}</p>`)}</section>`).join("")}
     </div>
+    ${(item.modules || []).map((module) => `<section class="project-module" id="${module.id}" aria-labelledby="${module.id}-heading"><header class="module-heading"><h4 id="${module.id}-heading">${escapeHtml(module.title)}</h4><p class="authors">Module contributors: ${authors(module.authors)}</p></header><div class="module-media">${media(module)}</div><div class="module-copy"><p>${escapeHtml(module.summary)}</p><p class="resource-links">${module.links.map(([label, href]) => resourceLink(label, href)).join("")}</p>${readingDetails("Implementation details", `<p>${escapeHtml(module.description)}</p>`)}</div></section>`).join("")}
   </article>`;
 }
 function renderEducation(item) {

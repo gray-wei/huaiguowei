@@ -98,7 +98,7 @@ if (!motionPreference.matches && "IntersectionObserver" in window && "animate" i
       for (const event of ["finish", "cancel"]) animation.addEventListener(event, () => animations.delete(animation), { once: true });
     }
   }, { threshold: 0.08 });
-  for (const group of document.querySelectorAll(".intro, .updates li, .section-heading, .publication-copy, .project-heading, .project-copy, .education-item, .closing-grid > section, .project-page > #top")) observer.observe(group);
+  for (const group of document.querySelectorAll(".intro, .updates li, .section-heading, .publication-copy, .project-heading, .project-copy, .module-heading, .module-copy, .education-item, .closing-grid > section, .project-page > #top")) observer.observe(group);
   for (const section of document.querySelectorAll(".project-page > section")) {
     const groups = section.querySelector(".research-media") ? section.querySelectorAll(":scope > h2, :scope > p") : [section];
     for (const group of groups) observer.observe(group);
