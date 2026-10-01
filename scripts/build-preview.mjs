@@ -7,6 +7,8 @@ const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const outDir = join(root, "_site");
 const escapeHtml = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 const link = (label, href, className = "") => `<a${className ? ` class="${className}"` : ""} href="${escapeHtml(href)}">${escapeHtml(label)}</a>`;
+const resourceLink = (label, href) => `<a class="action-link" href="${escapeHtml(href)}"><span>${escapeHtml(label)}</span><span class="link-arrow" aria-hidden="true">↗</span></a>`;
+const readingDetails = (label, content) => `<details class="reading-details"><summary><span>${escapeHtml(label)}</span><svg class="disclosure-arrow" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="m4 2 4 4-4 4" /></svg></summary><div class="details-copy">${content}</div></details>`;
 function authors(items) {
   return items.map((item) => {
     const name = item.self ? `<strong>${escapeHtml(item.name)}</strong>` : escapeHtml(item.name);
@@ -43,13 +45,16 @@ function document(title, description, body, prefix = "") {
 </html>`;
 }
 function renderProject(item) {
-  return `<article class="project-item" id="${item.id}"><div class="project-media-stack">${(item.modules || []).map((module) => media(module)).join("")}${media(item)}</div>
-    <div class="project-copy"><p class="eyebrow">${escapeHtml(item.category)}</p><h3>${escapeHtml(item.title)}</h3>
+  return `<article class="project-item" id="${item.id}"><header class="project-heading"><p class="eyebrow">${escapeHtml(item.category)}</p><h3>${escapeHtml(item.title)}</h3>
       <p class="authors">${authors(item.authors)}</p>
       ${item.advisors ? `<p class="advisors">Advisors: ${escapeHtml(item.advisors)}</p>` : ""}
-      <p>${escapeHtml(item.description)}</p>
-      ${item.links.length ? `<p class="resource-links">${item.links.map(([label, href]) => link(label + " ↗", href)).join("")}</p>` : ""}
-      ${(item.modules || []).map((module) => `<section class="project-module" id="${module.id}" aria-labelledby="${module.id}-heading"><h4 id="${module.id}-heading">${escapeHtml(module.title)}</h4><p class="authors">Module contributors: ${authors(module.authors)}</p><p>${escapeHtml(module.description)}</p><p class="resource-links">${module.links.map(([label, href]) => link(label + " ↗", href)).join("")}</p></section>`).join("")}
+    </header>
+    <div class="project-media-stack">${(item.modules || []).map((module) => media(module)).join("")}${media(item)}</div>
+    <div class="project-copy">
+      <p>${escapeHtml(item.summary || item.description)}</p>
+      ${item.links.length ? `<p class="resource-links">${item.links.map(([label, href]) => resourceLink(label, href)).join("")}</p>` : ""}
+      ${item.detailsLabel ? readingDetails(item.detailsLabel, `<p>${escapeHtml(item.details || item.description)}</p>`) : ""}
+      ${(item.modules || []).map((module) => `<section class="project-module" id="${module.id}" aria-labelledby="${module.id}-heading"><h4 id="${module.id}-heading">${escapeHtml(module.title)}</h4><p class="authors">Module contributors: ${authors(module.authors)}</p><p>${escapeHtml(module.summary)}</p><p class="resource-links">${module.links.map(([label, href]) => resourceLink(label, href)).join("")}</p>${readingDetails("Implementation details", `<p>${escapeHtml(module.description)}</p>`)}</section>`).join("")}
     </div>
   </article>`;
 }
@@ -75,10 +80,10 @@ function renderHome() {
       <div class="intro-copy">
         <div class="name-line"><h1 id="name">Guowei Huai</h1><span lang="zh">怀国威</span></div>
         <p class="intro-role">${escapeHtml(person.degree)}</p>
-        <p class="bio">I am a PhD student at ${escapeHtml(person.university)}, advised by ${link(person.supervisor.name, person.supervisor.url)}. ${escapeHtml(person.education)}</p>
-        <p class="bio">My research focuses on <strong>dexterous manipulation and real-world robot learning</strong>. I am currently working on <strong>vision–language–action (VLA) models</strong>, exploring how to use human data for VLA learning and how to fine-tune these models through post-training. My interests also include contact-rich tool use, in-hand manipulation, and teleoperation, bringing together learning-based control, human guidance, and tactile sensing in real arm–hand systems.</p>
+        <p class="bio">I am a PhD student at ${escapeHtml(person.university)}, advised by ${link(person.supervisor.name, person.supervisor.url)}. ${escapeHtml(person.educationSummary)}</p>
+        <p class="bio">My research focuses on <strong>dexterous manipulation and real-world robot learning</strong>. I am currently exploring human data for <strong>vision–language–action (VLA) learning</strong> and post-training fine-tuning. I combine learning-based control, human guidance, and tactile sensing for contact-rich tool use, in-hand manipulation, and teleoperation.</p>
         <p class="research-focus">${person.focus.map(escapeHtml).join(" · ")}</p>
-        <div class="contact-links">${link("Email", "mailto:" + person.email)}${link("CV", "assets/pdf/cv/Guowei_Huai_CV.pdf")}${link("GitHub", person.github)}</div>
+        <div class="contact-links">${resourceLink("Email", "mailto:" + person.email)}${resourceLink("CV", "assets/pdf/cv/Guowei_Huai_CV.pdf")}${resourceLink("GitHub", person.github)}</div>
       </div>
       <aside class="profile"><img class="portrait" src="${person.portrait}" width="176" height="216" alt="Guowei Huai" fetchpriority="high" /></aside>
     </section>
@@ -91,12 +96,12 @@ function renderHome() {
       <article class="publication-item">${media(publication)}<div class="publication-copy">
         <p class="venue">${publication.venue} · ${publication.status}</p>
         <h3>${link(publication.title, publication.project)}</h3><p class="authors">${authors(publication.authors)}</p>
-        <p>${escapeHtml(publication.description)}</p>
+        <p>${escapeHtml(publication.summary)}</p>
         <div class="publication-evidence">
-          <p class="results">${publication.results.map((result) => `<span><strong>${result.value}</strong> ${result.label}</span>`).join("")}</p>
-          <p class="training-note">${escapeHtml(publication.training)}</p>
+          <dl class="results">${publication.results.map((result) => `<div><dt>${escapeHtml(result.label)}</dt><dd>${escapeHtml(result.value)}</dd></div>`).join("")}</dl>
         </div>
-        <p class="resource-links">${link("Project page", publication.project)}${link("Paper", publication.paper)}</p>
+        <p class="resource-links">${resourceLink("Project page", publication.project)}${resourceLink("Paper", publication.paper)}</p>
+        ${readingDetails("Method & training details", `<p>${escapeHtml(publication.description)}</p><p class="training-note">${escapeHtml(publication.training)}</p>`)}
       </div></article>
     </section>
     <section class="research-section" id="projects" aria-labelledby="projects-heading">

@@ -9,6 +9,7 @@ export const person = {
   github: "https://github.com/gray-wei",
   portrait: "assets/img/profile/gray_pic.jpg",
   education: "Previously, I completed my MPhil through the Red Bird MPhil (RBM) Program at HKUST (Guangzhou) (2024–2026), advised by Jie Song. I received my B.Eng. in Computer Science from Beijing Institute of Technology, Zhuhai.",
+  educationSummary: "I completed my MPhil through HKUST (Guangzhou)’s Red Bird MPhil (RBM) Program and received my B.Eng. in Computer Science from Beijing Institute of Technology, Zhuhai.",
   focus: ["VLA Models", "Dexterous Hands", "Contact-rich RL", "Teleoperation", "Tactile Sensing"],
 };
 
@@ -29,6 +30,7 @@ export const publication = {
   project: "https://hly-123.github.io/HiFun/",
   paper: "https://hly-123.github.io/HiFun/assets/documents/hifun-corl2026.pdf",
   description: "A hierarchical real-world reinforcement learning framework for contact-rich functional tool use with high-DoF arm–hand systems. HiFun separates contact-aware hand skills from arm motion and skill activation, enabling efficient learning and recovery from contact disturbances.",
+  summary: "A hierarchical reinforcement learning framework for contact-rich tool use, separating hand skills from arm motion to support efficient learning and recovery.",
   results: [{ value: "98.3%", label: "mean success" }, { value: "6", label: "evaluated tasks" }, { value: "2", label: "dexterous hands" }],
   training: "Up to 60 min of online human-in-the-loop training per task; the full pipeline averages approximately 109 min per task.",
   video: "assets/video/research/hifun-overview.mp4",
@@ -45,6 +47,7 @@ export const teleoperation = {
     id: "teleoperation", title: "Unified Retargeting and Arm–Hand Teleoperation", category: "Retargeting · Teleoperation · Multimodal data",
     authors: [{ name: "Guowei Huai", self: true }, { name: "Linyi Huang", url: "https://hly-123.github.io/" }],
     description: "Manus glove retargeting and Vision Pro hand tracking share a common interface in one repository, mapping human hand motion to Inspire Hand, Leap Hand, XHand, and Sharpa with optimization-based vector and fingertip objectives. Franka arm control combines GELLO with hand retargeting and also supports a 3D mouse and Vision Pro. The platform synchronizes tactile sensing, robot states, and demonstrations for real-world reinforcement and imitation learning.",
+    summary: "A shared interface for Manus and Vision Pro retargeting across dexterous hands, with coordinated Franka control and synchronized tactile data.",
     video: "assets/video/research/teleop-preview.mp4", poster: "assets/img/research/teleop-poster.jpg",
     caption: "Vision Pro arm–hand teleoperation on Franka. Operator: Guowei Huai.", portrait: true,
     loop: false, preload: "none",
@@ -53,7 +56,7 @@ export const teleoperation = {
       caption: "GELLO + Manus arm–hand teleoperation on Franka. Operator: Linyi Huang.",
       loop: false, preload: "none",
     }],
-    links: [["Teleoperation details", "projects/teleoperation/"]],
+    links: [["Full project & demos", "projects/teleoperation/"]],
 };
 
 export const projects = [
@@ -70,6 +73,9 @@ export const projects = [
     id: "rdt-airbot", title: "Validating Diffusion-Based Visual Imitation Learning for Robotic Manipulation", category: "Course project · AIRBOT Play",
     authors: [{ name: "Yiming Zhu" }, { name: "Jiahong Chen" }, { name: "Guowei Huai", self: true }],
     description: "Fine-tuning Robotics Diffusion Transformer on self-collected AIRBOT Play demonstrations for generalization, long-horizon pick-and-place, and state-aware recovery. Reproduced DP3 and RDT-1B and processed 490 Airbot500 teleoperation episodes. The course evaluation reported 72% seen-task success and 30% unseen-container generalization.",
+    summary: "Fine-tuning Robotics Diffusion Transformer on self-collected AIRBOT Play demonstrations, with 72% seen-task success and 30% unseen-container generalization.",
+    detailsLabel: "Experiment details",
+    details: "Reproduced DP3 and RDT-1B and processed 490 Airbot500 teleoperation episodes. Explored long-horizon pick-and-place, state-aware recovery, and generalization to unseen containers.",
     video: "assets/video/research/rdt-teaser.mp4", poster: "assets/img/research/rdt-poster.jpg",
     caption: "Visual manipulation experiment on AIRBOT Play.",
     links: [["Report", "https://github.com/zachzhuu/RDT-Airbot/blob/main/assets/report.pdf"], ["Code", "https://github.com/zachzhuu/RDT-Airbot"]],
