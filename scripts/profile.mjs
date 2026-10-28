@@ -7,6 +7,7 @@ export const person = {
   degree: "PhD student in Robotics and Autonomous Systems",
   supervisor: { name: "Jie Song", url: "https://scholar.google.com/citations?hl=en&user=kBN1B6YAAAAJ&view_op=list_works&sortby=pubdate" },
   github: "https://github.com/gray-wei",
+  scholar: "https://scholar.google.com/citations?user=gjyv7cEAAAAJ",
   portrait: "assets/img/profile/gray_pic.jpg",
   education: "Previously, I completed my MPhil through the Red Bird MPhil (RBM) Program at HKUST (Guangzhou) (2024–2026), advised by Jie Song. I received my B.Eng. in Computer Science from Beijing Institute of Technology, Zhuhai.",
   educationSummary: "I completed my MPhil through HKUST (Guangzhou)’s Red Bird MPhil (RBM) Program and received my B.Eng. in Computer Science from Beijing Institute of Technology, Zhuhai.",
@@ -29,6 +30,7 @@ export const publication = {
   ],
   project: "https://hly-123.github.io/HiFun/",
   paper: "https://hly-123.github.io/HiFun/assets/documents/hifun-corl2026.pdf",
+  arxiv: "https://arxiv.org/abs/2610.19518",
   description: "A hierarchical real-world reinforcement learning framework for contact-rich functional tool use with high-DoF arm–hand systems. HiFun separates contact-aware hand skills from arm motion and skill activation, enabling efficient learning and recovery from contact disturbances.",
   summary: "A hierarchical reinforcement learning framework for contact-rich tool use, separating hand skills from arm motion to support efficient learning and recovery.",
   results: [{ value: "98.3%", label: "mean success" }, { value: "6", label: "evaluated tasks" }, { value: "2", label: "dexterous hands" }],
@@ -86,7 +88,7 @@ export const projects = [
 export const education = [
   { title: "PhD · Robotics and Autonomous Systems", school: "HKUST (Guangzhou)", date: "2026.09 – present" },
   { title: "MPhil · Robotics and Autonomous Systems", school: "HKUST (Guangzhou)", date: "2024.09 – 2026.09", details: "Red Bird MPhil (RBM) Program · GPA: 4.04/4.30", academicAdvisor: "Jie Song", projectAdvisor: "Arthur Kar Leung Lin" },
-  { title: "B.Eng. · Computer Science", school: "Beijing Institute of Technology, Zhuhai", date: "2019 – 2023" },
+  { title: "B.Eng. · Computer Science", school: "Beijing Institute of Technology, Zhuhai", date: "2019 – 2023", details: "Average score: 89.8/100" },
 ];
 
 export const service = [

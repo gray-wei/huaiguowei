@@ -227,3 +227,6 @@ time, .entry-date { font-size: var(--text-small); color: var(--muted); }
   .media-frame.is-hovered:not(.is-playing):not(:focus-within) { transform: none; }
   .reading-details[open] .details-copy { animation: none; }
 }
+
+.contact-link > span:first-child { display: inline-flex; align-items: center; gap: 6px; }
+.contact-icon { flex: none; }

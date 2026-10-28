@@ -32,8 +32,11 @@ test("analytics tracks both published pages and stays disabled in local previews
 
 test("publishes current academic identity and complete HiFun information", () => {
   assert.match(home, /PhD student in Robotics and Autonomous Systems/);
+  assert.ok(home.includes('href="https://scholar.google.com/citations?user=gjyv7cEAAAAJ"'));
+  assert.equal([...home.matchAll(/class="contact-icon"/g)].length, 4);
   assert.match(home, /mailto:ghuai073@connect\.hkust-gz\.edu\.cn/);
   assert.match(home, /HiFun: A Hierarchical Framework for Efficient Functional Dexterous Manipulation Learning/);
+  assert.ok(home.includes('href="https://arxiv.org/abs/2610.19518"'));
   assert.match(home, /Linyi Huang<\/a>, <a[^>]+><strong>Guowei Huai<\/strong><\/a>, <a[^>]+>Weibin Liu<\/a>, <a[^>]+>Shulong Jiang<\/a>, <a[^>]+>Ping Tan<\/a>, <a[^>]+>Weixuan Zhang<\/a>/);
   assert.match(home, /98\.3%/);
   assert.match(home, /60 min of online human-in-the-loop training/);
@@ -42,7 +45,7 @@ test("publishes current academic identity and complete HiFun information", () =>
   assert.ok(home.indexOf('id="publications"') < home.indexOf('id="projects"'));
   assert.ok(home.indexOf('id="service"') < home.indexOf('id="honors"'));
   assert.doesNotMatch(home, /Code coming soon/);
-  assert.doesNotMatch(home, /href="#"|href=""|arXiv|Google Scholar|Goal-Conditioned In-Hand Rotation/);
+  assert.doesNotMatch(home, /href="#"|href=""|Goal-Conditioned In-Hand Rotation/);
 });
 
 test("every local page link, anchor and media reference resolves", () => {

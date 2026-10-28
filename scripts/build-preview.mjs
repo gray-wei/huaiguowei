@@ -21,6 +21,13 @@ const analytics = process.argv.includes("--production") ? `
 const escapeHtml = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 const link = (label, href, className = "") => `<a${className ? ` class="${className}"` : ""} href="${escapeHtml(href)}">${escapeHtml(label)}</a>`;
 const resourceLink = (label, href) => `<a class="action-link" href="${escapeHtml(href)}"><span>${escapeHtml(label)}</span><span class="link-arrow" aria-hidden="true">↗</span></a>`;
+const contactIcons = {
+  Email: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/>',
+  CV: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M8 13h8M8 17h6"/>',
+  GitHub: '<path d="M9 19c-4.3 1.3-4.3-2-6-2m12 5v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.2-1.5 6.2-7A5.4 5.4 0 0 0 18.8 5a5 5 0 0 0-.1-3.5S17.5 1.1 15 2.8a13.4 13.4 0 0 0-7 0C5.5 1.1 4.3 1.5 4.3 1.5A5 5 0 0 0 4.2 5a5.4 5.4 0 0 0-1.5 3.7c0 5.4 3.2 6.6 6.2 7a3.4 3.4 0 0 0-.9 2.5V22"/>',
+  'Google Scholar': '<path d="m2 9 10-6 10 6-10 6Z"/><path d="M6 12v6c4 3 8 3 12 0v-6M22 9v8"/>',
+};
+const contactLink = (label, href) => `<a class="action-link contact-link" href="${escapeHtml(href)}"><span><svg class="contact-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${contactIcons[label]}</svg>${escapeHtml(label)}</span><span class="link-arrow" aria-hidden="true">↗</span></a>`;
 const readingDetails = (label, content) => `<details class="reading-details"><summary><span>${escapeHtml(label)}</span><svg class="disclosure-arrow" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="m4 2 4 4-4 4" /></svg></summary><div class="details-copy">${content}</div></details>`;
 function authors(items) {
   return items.map((item) => {
@@ -97,7 +104,7 @@ function renderHome() {
         <p class="bio">I am a PhD student at ${escapeHtml(person.university)}, advised by ${link(person.supervisor.name, person.supervisor.url)}. ${escapeHtml(person.educationSummary)}</p>
         <p class="bio">My research focuses on <strong>dexterous manipulation and real-world robot learning</strong>, with an emphasis on <strong>reinforcement learning and learning from human data</strong>. I explore how human data can support robot policy pre-training and post-training, including fine-tuning for real-world tasks. My work spans contact-rich tool use, in-hand manipulation, and teleoperation, combining learning-based control with human guidance and tactile sensing.</p>
         <p class="research-focus">${person.focus.map(escapeHtml).join(" · ")}</p>
-        <div class="contact-links">${resourceLink("Email", "mailto:" + person.email)}${resourceLink("CV", cvHref)}${resourceLink("GitHub", person.github)}</div>
+        <div class="contact-links">${contactLink("Email", "mailto:" + person.email)}${contactLink("CV", cvHref)}${contactLink("GitHub", person.github)}${contactLink("Google Scholar", person.scholar)}</div>
       </div>
       <aside class="profile"><img class="portrait" src="${person.portrait}" width="176" height="216" alt="Guowei Huai" fetchpriority="high" /></aside>
     </section>
@@ -114,7 +121,7 @@ function renderHome() {
         <div class="publication-evidence">
           <dl class="results">${publication.results.map((result) => `<div><dt>${escapeHtml(result.label)}</dt><dd>${escapeHtml(result.value)}</dd></div>`).join("")}</dl>
         </div>
-        <p class="resource-links">${resourceLink("Project page", publication.project)}${resourceLink("Paper", publication.paper)}</p>
+        <p class="resource-links">${resourceLink("Project page", publication.project)}${resourceLink("Paper", publication.paper)}${resourceLink("arXiv", publication.arxiv)}</p>
         ${readingDetails("Method & training details", `<p>${escapeHtml(publication.description)}</p><p class="training-note">${escapeHtml(publication.training)}</p>`)}
       </div></article>
     </section>
