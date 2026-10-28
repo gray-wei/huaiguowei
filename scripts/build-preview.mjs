@@ -8,6 +8,7 @@ const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const outDir = join(root, "_site");
 const cvPath = "assets/pdf/cv/Guowei_Huai_CV.pdf";
 const cvVersion = createHash("sha256").update(readFileSync(join(root, cvPath))).digest("hex").slice(0, 12);
+const cssVersion = createHash("sha256").update(readFileSync(join(root, "assets/homepage.css"))).digest("hex").slice(0, 12);
 const cvHref = `${cvPath}?v=${cvVersion}`;
 const analytics = process.argv.includes("--production") ? `
   <!-- Statcounter: private, invisible tracking for the published site only. -->
@@ -22,12 +23,12 @@ const escapeHtml = (value) => String(value).replaceAll("&", "&amp;").replaceAll(
 const link = (label, href, className = "") => `<a${className ? ` class="${className}"` : ""} href="${escapeHtml(href)}">${escapeHtml(label)}</a>`;
 const resourceLink = (label, href) => `<a class="action-link" href="${escapeHtml(href)}"><span>${escapeHtml(label)}</span><span class="link-arrow" aria-hidden="true">↗</span></a>`;
 const contactIcons = {
-  Email: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/>',
-  CV: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M8 13h8M8 17h6"/>',
-  GitHub: '<path d="M9 19c-4.3 1.3-4.3-2-6-2m12 5v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.2-1.5 6.2-7A5.4 5.4 0 0 0 18.8 5a5 5 0 0 0-.1-3.5S17.5 1.1 15 2.8a13.4 13.4 0 0 0-7 0C5.5 1.1 4.3 1.5 4.3 1.5A5 5 0 0 0 4.2 5a5.4 5.4 0 0 0-1.5 3.7c0 5.4 3.2 6.6 6.2 7a3.4 3.4 0 0 0-.9 2.5V22"/>',
-  'Google Scholar': '<path d="m2 9 10-6 10 6-10 6Z"/><path d="M6 12v6c4 3 8 3 12 0v-6M22 9v8"/>',
+  Email: '<path d="M3 4h18a2 2 0 0 1 2 2v1l-11 7L1 7V6a2 2 0 0 1 2-2Zm-2 5.4 10.5 6.7a1 1 0 0 0 1 0L23 9.4V18a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2Z"/>',
+  CV: '<path d="M5 2h9v7h7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm11 0 5 5h-5ZM7 12v2h10v-2Zm0 5v2h8v-2Z"/>',
+  GitHub: '<path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/>',
+  'Google Scholar': '<path d="M12 1 0 10l4.8 3.6a7.2 7.2 0 0 1 14.4 0L24 10ZM12 9a6 6 0 1 0 0 12 6 6 0 0 0 0-12Z"/>',
 };
-const contactLink = (label, href) => `<a class="action-link contact-link" href="${escapeHtml(href)}"><span><svg class="contact-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${contactIcons[label]}</svg>${escapeHtml(label)}</span><span class="link-arrow" aria-hidden="true">↗</span></a>`;
+const contactLink = (label, href) => `<a class="contact-link" href="${escapeHtml(href)}"><svg class="contact-icon" viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true" focusable="false">${contactIcons[label]}</svg><span>${escapeHtml(label)}</span></a>`;
 const readingDetails = (label, content) => `<details class="reading-details"><summary><span>${escapeHtml(label)}</span><svg class="disclosure-arrow" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="m4 2 4 4-4 4" /></svg></summary><div class="details-copy">${content}</div></details>`;
 function authors(items) {
   return items.map((item) => {
@@ -51,7 +52,7 @@ function document(title, description, body, prefix = "") {
   <meta property="og:title" content="${escapeHtml(title)}" /><meta property="og:description" content="${escapeHtml(description)}" /><meta property="og:type" content="website" />
   <title>${escapeHtml(title)}</title>
   <link rel="icon" href="${prefix}assets/img/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="${prefix}assets/homepage.css" />
+  <link rel="stylesheet" href="${prefix}assets/homepage.css?v=${cssVersion}" />
   <script src="${prefix}assets/homepage.js" defer></script>
 </head>
 <body>

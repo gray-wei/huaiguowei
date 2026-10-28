@@ -228,5 +228,7 @@ time, .entry-date { font-size: var(--text-small); color: var(--muted); }
   .reading-details[open] .details-copy { animation: none; }
 }
 
-.contact-link > span:first-child { display: inline-flex; align-items: center; gap: 6px; }
-.contact-icon { flex: none; }
+.contact-link { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; color: #45454b; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 14px; font-weight: 500; line-height: 1.4; white-space: nowrap; text-decoration: none; }
+.contact-icon { display: block; flex: none; width: 17px; height: 17px; color: #62626a; }
+.contact-link:hover, .contact-link:focus-visible { color: var(--blue); text-decoration: none; }
+.contact-link:hover .contact-icon, .contact-link:focus-visible .contact-icon { color: currentColor; }
